@@ -1,0 +1,39 @@
+{
+	"compilerOptions": {
+		"target": "es2015", //"es2015", // 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'
+		"module": "commonjs", //"commonjs", //'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'esnext'
+		"declaration": false,
+		"outDir": "lib",
+		"strict": true,
+		"importHelpers": true,
+		"moduleResolution": "node",
+		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"sourceMap": false,
+		"baseUrl": ".",
+		"types": [
+			"mocha",
+      "chai",
+      "jsdom"
+		],
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		},
+		"lib": [
+			"esnext",
+			"dom",
+			"dom.iterable",
+			"scripthost"
+		]
+	},
+	"include": [
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"tests/**/*.ts"
+	]
+}
