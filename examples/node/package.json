@@ -1,0 +1,14 @@
+{
+  "name": "underscore-example-node",
+  "version": "1.0.0",
+  "description": "underlog example: consuming from nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Damiano Fusco",
+  "license": "MIT",
+  "dependencies": {
+    "@damianof/underlog": "file:../.."
+  }
+}

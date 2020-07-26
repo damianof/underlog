@@ -7,7 +7,11 @@ export interface IUnderLog {
     level: string
   }): Promise<boolean>
 
-  transportsWrite(params: ILogTransportWriteParams): Promise<boolean>
+  transportsWrite(params: ILogTransportWriteParams,): Promise<boolean>
+
+  log(level: string, message: string, data?: any): void
+  highlight(message: string, data?: any): void
+  debug(message: string, data?: any): void
 }
 
 export interface IUnderLogOptions {
@@ -88,6 +92,40 @@ export class UnderLog implements IUnderLog {
         }
       })
     })
+  }
+
+  log(level: string, message: string, data?: any): void {
+    const writeParams: any = {
+      timestamp: this.timestamp,
+      level: level,
+      message: message
+    }
+
+    if (arguments.length > 2) {
+      writeParams.data = data
+    }
+
+    this.transportsWrite(writeParams).then(() => {
+      // nothing to do here
+    })
+  }
+
+  highlight(message: string, data?: any): void {
+    const level = 'highlight'
+    if (arguments.length > 1) {
+      this.log(level, message, data)
+    } else {
+      this.log(level, message)
+    }
+  }
+
+  debug(message: string, data?: any): void {
+    const level = 'debug'
+    if (arguments.length > 1) {
+      this.log(level, message, data)
+    } else {
+      this.log(level, message)
+    }
   }
 
 }

@@ -10,13 +10,13 @@ export class StdErrTransport extends BaseTransport {
   private readonly prefix: string = Object.freeze('\x1b[')
   private readonly suffix: string = Object.freeze('\x1b[0;37m')
   private readonly levelStyles: { [key: string]: string } = {
-    log: '37m',
-		highlight: '7;33m', // yellow background
-    debug: '34m', // blue
-		info: '7;33m', //'32m', // green
-		warn: '33m', // yellow
-    ['warn-high']: '35m',
-		error: '31m' // red
+    log: '0;1;37m', // white, bold
+		highlight: '7;1;36m', // cyan background, bold
+    debug: '0;1;34m', // blue, bold
+		info: '0;1;32m', // green, bold
+		warn: '0;1;33m', // yellow, bold
+    ['warn-high']: '0;1;35m', // purple, bold
+		error: '0;1;31m' // red, bold
 	}
 
   constructor(params: {
@@ -38,8 +38,10 @@ export class StdErrTransport extends BaseTransport {
         message
       } = params
 
-      let outData: string = ''
+      let outData: string = 'undefined'
       const includesData = Object.keys(params).length === 4
+
+      console.log('includesData', includesData, Object.keys(params).length)
 		
       // try to stringify data if is JSON
       if (includesData && params.data){

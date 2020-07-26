@@ -3,7 +3,7 @@
 	"version": "0.8.5",
 	"description": "Logger that can support different clients (Browser, Node, custom, etc)",
 	"main": "lib/index.js",
-	"types": "types/index.d.ts",
+	"types": "lib/index.d.ts",
 	"scripts": {
 		"test": "mocha -r ts-node/register tests/**/*.spec.ts",
 		"build": "tsc"
