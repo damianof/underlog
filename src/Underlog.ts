@@ -34,7 +34,6 @@ export class UnderLog implements IUnderLog {
     } else {
       this.supportedLevels = defaultLevels
     }
-    console.log('UnderLog supportedLevels', this.supportedLevels)
 
     this.transports = transports
   }
@@ -67,7 +66,6 @@ export class UnderLog implements IUnderLog {
           const currentTransportLevelIndex = supportedLevels.indexOf(transportLevel)
           if (currentTransportLevelIndex > 1) {
             const previousLevels = supportedLevels.slice(0, currentTransportLevelIndex)
-            //console.log(`transportLevel: ${transportLevel} level: ${ level } currentTransportLevelIndex: ${ currentTransportLevelIndex } previousLevels`, previousLevels)
             result = previousLevels.includes(level)
           }
         }
