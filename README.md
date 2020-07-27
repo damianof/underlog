@@ -4,7 +4,8 @@
 
 Logger that can support different clients (Browser, Node, custom, etc)
 
-# StdErrTransport Default color styles
+### StdErrTransport Default color styles
+
 {
   log: '0;1;37m', // white, bold
   highlight: '7;1;36m', // cyan background, bold
@@ -14,29 +15,32 @@ Logger that can support different clients (Browser, Node, custom, etc)
   error: '0;1;31m' // red, bold
 }
 
-# Terminal Color Reference (this values can be used for the levelStyles param for the StdErrTransport)
-# (please note that you can also provide more complex values like '0;1;37m' to define bg, bold or other attributes)
-Reset: '0m'
-Bright: '1m'
-Dim: '2m'
-Underscore: '4m'
-Reverse: '7m'
+### Terminal Color Reference (this values can be used for the levelStyles param for the StdErrTransport)
+(please note that you can also provide more complex values like `0;1;37m` to define bg, bold or other attributes)
 
-FgBlack: '30m'
-FgRed: '31m'
-FgGreen: '32m'
-FgYellow: '33m'
-FgBlue: '34m'
-FgMagenta: '35m'
-FgCyan: '36m'
-FgWhite: '37m'
-
-BgBlack: '40m'
-BgRed: '41m'
-BgGreen: '42m'
-BgYellow: '43m'
-BgBlue: '44m'
-BgMagenta: '45m'
-BgCyan: '46m'
-BgWhite: '47m'
-
+### Terminal Color Reference
+###### (this values can be used for the levelStyles param for the StdErrTransport)
+>
+* Reset: '0m'
+* Bright: '1m'
+* Dim: '2m'
+* Underscore: '4m'
+* Reverse: '7m'
+>
+* Black: '30m'
+* Red: '31m'
+* Green: '32m'
+* Yellow: '33m'
+* Blue: '34m'
+* Magenta: '35m'
+* Cyan: '36m'
+* White: '37m'
+>
+* Bg Black: '40m'
+* Bg Red: '41m'
+* Bg Green: '42m'
+* Bg Yellow: '43m'
+* Bg Blue: '44m'
+* Bg Magenta: '45m'
+* Bg Cyan: '46m'
+* Bg White: '47m'
