@@ -1,4 +1,4 @@
-import { ILogTransport, ILogTransportWriteParams } from '@/ILogTransport';
+import { ILogTransport, ILogTransportWriteParams } from '../ILogTransport';
 export declare abstract class BaseTransport implements ILogTransport {
     readonly level: string;
     readonly levelOnly: boolean;

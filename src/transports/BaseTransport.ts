@@ -1,7 +1,7 @@
 import { 
   ILogTransport, 
   ILogTransportWriteParams 
-} from '@/ILogTransport'
+} from '../ILogTransport'
 
 export abstract class BaseTransport implements ILogTransport {
   public readonly level!: string
