@@ -1,3 +1,4 @@
+import { ITimestampService } from './ITimestampService';
 import { ILogTransport, ILogTransportWriteParams } from './ILogTransport';
 export interface IUnderLog {
     canProceed(params: {
@@ -11,12 +12,14 @@ export interface IUnderLog {
     debug(message: string, data?: any): void;
 }
 export interface IUnderLogOptions {
-    levels: string[];
-    transports: ILogTransport[];
+    levels?: string[];
+    transports?: ILogTransport[];
+    timestampService?: ITimestampService;
 }
 export declare class UnderLog implements IUnderLog {
     private supportedLevels;
     private transports;
+    private timestampService;
     private get timestamp();
     constructor(options: IUnderLogOptions);
     canProceed(params: {

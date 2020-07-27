@@ -12,4 +12,5 @@ export declare abstract class BaseTransport implements ILogTransport {
      * @param params
      */
     abstract write(params: ILogTransportWriteParams): Promise<boolean>;
+    tryGetData(params: ILogTransportWriteParams, outData: string): boolean;
 }

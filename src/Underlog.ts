@@ -1,4 +1,14 @@
-import { ILogTransport, ILogTransportWriteParams } from './ILogTransport'
+import { ITimestampService } from './ITimestampService'
+import { 
+  ILogTransport, 
+  ILogTransportWriteParams 
+} from './ILogTransport'
+import {
+  MomentTimestampService
+} from './timeservices/MomentTimestampService'
+import {
+  DefaultTransport
+} from './transports/DefaultTransport'
 
 export interface IUnderLog {
   canProceed(params: {
@@ -15,31 +25,53 @@ export interface IUnderLog {
 }
 
 export interface IUnderLogOptions {
-  levels: string[]
-  transports: ILogTransport[]
+  levels?: string[] 
+  transports?: ILogTransport[] 
+  timestampService?: ITimestampService 
 }
 
 export class UnderLog implements IUnderLog {
   private supportedLevels!: string[]
   private transports!: ILogTransport[]
-  private get timestamp(): Date {
-    return new Date()
+  private timestampService!: ITimestampService
+
+  private get timestamp(): string {
+    if (this.timestampService) {
+      return this.timestampService.getTimestamp()
+    }
+    return (new Date()).toString()
   }
 
   constructor(options: IUnderLogOptions) {
     const {
       levels,
-      transports
+      transports,
+      timestampService
     } = options
 
     const defaultLevels = ['highlight', 'debug']
     if ((levels || []).length > 0) {
-      this.supportedLevels = [...defaultLevels, ...levels]
+      this.supportedLevels = [...defaultLevels, ...(<string[]>levels)]
     } else {
       this.supportedLevels = defaultLevels
     }
 
-    this.transports = transports
+    if ((transports || []).length > 0) {
+      this.transports = <ILogTransport[]>transports
+    } else {
+      this.transports = [
+        new DefaultTransport({
+          level: 'error',
+          levelOnly: false
+        })
+      ]
+    }
+
+    if (timestampService) {
+      this.timestampService = timestampService
+    } else {
+      this.timestampService = new MomentTimestampService()
+    }
   }
 
   async canProceed(params: {

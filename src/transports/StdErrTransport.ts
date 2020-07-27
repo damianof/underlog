@@ -38,29 +38,14 @@ export class StdErrTransport extends BaseTransport {
         message
       } = params
 
-      let outData: string = 'undefined'
-      const includesData = Object.keys(params).length === 4
-
-      console.log('includesData', includesData, Object.keys(params).length)
-		
-      // try to stringify data if is JSON
-      if (includesData && params.data){
-        if (typeof params.data === 'string') {
-          outData = params.data
-        } else {
-          try {
-            outData = JSON.stringify(params.data)
-          } catch {
-            outData = params.data.toString()
-          }
-        }
-      }
+      let outData = ''
+      const includesData = this.tryGetData(params, outData)
 
       const outMessage = `${ timestamp } ${ this.prefix }${ this.levelStyles[level] }${ level }${ this.suffix }: ${ message }`
       if (includesData){
         console.log(outMessage, outData)
       } else {
-        console.log(outMessage,)
+        console.log(outMessage)
       }
 
       resolve(true)

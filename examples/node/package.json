@@ -9,6 +9,6 @@
   "author": "Damiano Fusco",
   "license": "MIT",
   "dependencies": {
-    "@damianof/underlog": "file:../.."
+    "underlog": "file:../.."
   }
 }

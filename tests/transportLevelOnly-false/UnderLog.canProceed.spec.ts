@@ -5,8 +5,7 @@ import { UnderLog } from '../../src/UnderLog'
 describe('UnderLog.canProceed with transportLevelOnly false', () => {
 
 	const underLog = new UnderLog({
-		levels: ['info', 'warn', 'warn-high', 'error'],
-		transports: []
+		levels: ['info', 'warn', 'warn-high', 'error']
 	})
 	const transportLevelOnly = false
 

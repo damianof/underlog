@@ -21,4 +21,32 @@ export abstract class BaseTransport implements ILogTransport {
    * @param params 
    */
   abstract write(params: ILogTransportWriteParams): Promise<boolean>
+
+  tryGetData(params: ILogTransportWriteParams, outData: string): boolean {
+    outData = ''
+    const includesData = Object.keys(params).length === 4
+		
+    // try to stringify data if is JSON
+    if (includesData){
+      if (!params.data) {
+        outData = 'undefined'
+        return true
+      }
+
+      if (typeof params.data === 'string') {
+        outData = params.data
+        return true
+      }
+
+      try {
+        outData = JSON.stringify(params.data)
+        return true
+      } catch {
+        outData = params.data.toString()
+        return true
+      }
+    } else {
+      return false
+    }
+  }
 }

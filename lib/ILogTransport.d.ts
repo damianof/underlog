@@ -1,5 +1,5 @@
 export interface ILogTransportWriteParams {
-    timestamp: Date;
+    timestamp: string;
     level: string;
     message: string;
     data?: any;

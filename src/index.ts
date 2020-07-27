@@ -1,17 +1,17 @@
-import { UnderLog } from './UnderLog'
+import { 
+  UnderLog 
+} from './UnderLog'
 import { 
   BaseTransport,
   DefaultTransport,
   ChromeTransport,
   StdErrTransport
- } from './transports'
+} from './transports'
 
 export = {
-  UnderLog: UnderLog,
-  transports: {
-    BaseTransport,
-    DefaultTransport,
-    ChromeTransport,
-    StdErrTransport
-  }
+  UnderLog,
+  BaseTransport,
+  DefaultTransport,
+  ChromeTransport,
+  StdErrTransport
 }

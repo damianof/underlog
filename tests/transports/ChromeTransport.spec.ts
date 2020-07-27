@@ -10,6 +10,8 @@ import { JSDOM } from 'jsdom'
 
 describe('ChromeTransport.write', () => {
 
+  const timestamp = (new Date()).toString()
+
 	const transport = new ChromeTransport({
     level: 'info',
     levelOnly: false,
@@ -27,7 +29,7 @@ describe('ChromeTransport.write', () => {
 
 		it('should return true when level is log ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'log',
         message: 'unit tests'
 			})
@@ -40,7 +42,7 @@ describe('ChromeTransport.write', () => {
 
 		it('should return true when level is info ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'info',
         message: 'unit tests'
 			})

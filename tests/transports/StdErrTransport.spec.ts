@@ -7,7 +7,9 @@ import {
   StdErrTransport 
 } from '../../src/transports/StdErrTransport'
 
-describe.only('StdErrTransport.write', () => {
+describe('StdErrTransport.write', () => {
+
+  const timestamp = (new Date()).toString()
 
 	const transport = new StdErrTransport({
     level: 'info',
@@ -19,7 +21,7 @@ describe.only('StdErrTransport.write', () => {
 
 		it('should return true when level is log ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'log',
         message: 'unit tests'
 			})
@@ -32,7 +34,7 @@ describe.only('StdErrTransport.write', () => {
 
 		it('should return true when level is info ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'info',
         message: 'unit tests'
 			})
@@ -41,7 +43,7 @@ describe.only('StdErrTransport.write', () => {
 
     it('should return true when level is warn ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'warn',
         message: 'unit tests'
 			})
@@ -50,7 +52,7 @@ describe.only('StdErrTransport.write', () => {
 
     it('should return true when level is warn-high ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'warn-high',
         message: 'unit tests'
 			})
@@ -59,7 +61,7 @@ describe.only('StdErrTransport.write', () => {
 
     it('should return true when level is error ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'error',
         message: 'unit tests'
 			})

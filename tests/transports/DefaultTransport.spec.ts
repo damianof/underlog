@@ -9,6 +9,8 @@ import {
 
 describe('DefaultTransport.write', () => {
 
+  const timestamp = (new Date()).toString()
+
 	const transport = new DefaultTransport({
     level: 'info',
     levelOnly: false
@@ -18,7 +20,7 @@ describe('DefaultTransport.write', () => {
 
 		it('should return true when level is log ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'log',
         message: 'unit tests'
 			})
@@ -31,7 +33,7 @@ describe('DefaultTransport.write', () => {
 
 		it('should return true when level is info ', async () => {
 			const result = await transport.write({
-        timestamp: new Date(),
+        timestamp: timestamp,
         level: 'info',
         message: 'unit tests'
 			})

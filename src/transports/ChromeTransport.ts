@@ -37,21 +37,8 @@ export class ChromeTransport extends BaseTransport {
         message
       } = params
 
-      let outData: string = ''
-      const includesData = Object.keys(params).length === 4
-		
-      // try to stringify data if is JSON
-      if (includesData && params.data){
-        if (typeof params.data === 'string') {
-          outData = params.data
-        } else {
-          try {
-            outData = JSON.stringify(params.data)
-          } catch {
-            outData = params.data.toString()
-          }
-        }
-      }
+      let outData = ''
+      const includesData = this.tryGetData(params, outData)
       
       let isChrome = false
       if (navigator) {

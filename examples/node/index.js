@@ -1,6 +1,6 @@
-const { UnderLog, transports } = require('@damianof/underlog')
+const { UnderLog, StdErrTransport } = require('underlog');
 
-const stdErrTransport = new transports.StdErrTransport({
+const stdErrTransport = new StdErrTransport({
   level: 'info',
   levelOnly: false
 });
