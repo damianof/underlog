@@ -43,6 +43,6 @@
 	},
 	"homepage": "https://github.com/damianof/underlog#readme",
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
+		"registry": "https://registry.npmjs.org/"
 	}
 }
