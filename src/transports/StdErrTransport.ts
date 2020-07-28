@@ -1,10 +1,5 @@
-import { 
-  ILogTransport, 
-  ILogTransportWriteParams 
-} from '../ILogTransport'
-import { 
-  BaseTransport 
-} from './BaseTransport'
+import { ILogTransport, ILogTransportWriteParams } from '../ILogTransport'
+import { BaseTransport } from './BaseTransport'
 
 export class StdErrTransport extends BaseTransport {
   private readonly prefix: string = Object.freeze('\x1b[')
@@ -16,7 +11,7 @@ export class StdErrTransport extends BaseTransport {
     info: '0;1;32m', // green, bold
     warn: '0;1;33m', // yellow, bold
     ['warn-high']: '0;1;35m', // purple, bold
-    error: '0;1;31m' // red, bold
+    error: '0;1;31m', // red, bold
   }
 
   constructor(params: {
@@ -32,18 +27,14 @@ export class StdErrTransport extends BaseTransport {
 
   async write(params: ILogTransportWriteParams): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
-      const {
-        timestamp,
-        level,
-        message
-      } = params
+      const { timestamp, level, message } = params
 
-      let outData = ''
-      const includesData = this.tryGetData(params, outData)
+      // get data as string
+      const { dataAsString, hasData } = this.tryGetData(params)
 
-      const outMessage = `${ timestamp } ${ this.prefix }${ this.levelStyles[level] }${ level }${ this.suffix }: ${ message }`
-      if (includesData){
-        console.log(outMessage, outData)
+      const outMessage = `${timestamp} ${this.prefix}${this.levelStyles[level]}${level}${this.suffix}: ${message}`
+      if (hasData) {
+        console.log(outMessage, dataAsString)
       } else {
         console.log(outMessage)
       }

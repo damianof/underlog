@@ -4,6 +4,13 @@
 
 Logger that can support different clients (Browser, Node, custom, etc)
 
+# Client Side example with ChromeTransport and HtmlTransport (screenshot)
+![browser-multiple-transports](screenshots/browser-multiple-transports.png)
+
+# Server Side example with StdErrTransport (screenshot)
+![stderrtransport-node](screenshots/stderrtransport-node.png) 
+
+
 ### StdErrTransport Default color styles
 
 {

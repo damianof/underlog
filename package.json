@@ -1,13 +1,17 @@
 {
   "name": "underlog",
-  "version": "0.9.1",
+  "version": "0.9.5",
   "description": "Logger that can support different clients (Browser, Node, custom, etc)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "TS_NODE_PROJECT='./tsconfig.tests.json' mocha -r ts-node/register tests/**/*.spec.ts",
     "build-tests": "TS_NODE_PROJECT='./tsconfig.tests.json' tsc",
-    "build": "tsc --preserveSymlinks true"
+    "build": "tsc --preserveSymlinks true",
+    "pretty": "prettier --write '**/*.ts'",
+    "rollup-browser": "rollup -c rollup.browser.js",
+    "rollup": "npm run rollup-browser",
+    "all": "rm -rf lib; npm run build; npm run pretty; npm run rollup; npm run test; node examples/node"
   },
   "dependencies": {
     "moment": "^2.27.0"
@@ -22,6 +26,10 @@
     "jsdom": "16.3.0",
     "jsdom-global": "3.0.2",
     "mocha": "^8.0.1",
+    "rollup": "^2.23.0",
+    "rollup-plugin-babel-minify": "^10.0.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "ts-node": "^8.10.2",
     "tslib": "^2.0.0",
     "typescript": "^3.7.5"

@@ -1,21 +1,16 @@
-import { 
-  ILogTransport, 
-  ILogTransportWriteParams 
-} from '../ILogTransport'
-import { 
-  BaseTransport 
-} from './BaseTransport'
+import { ILogTransport, ILogTransportWriteParams } from '../ILogTransport'
+import { BaseTransport } from './BaseTransport'
 
 export class HtmlTransport extends BaseTransport {
   private readonly domElement!: HTMLElement
   private readonly levelStyles: { [key: string]: string } = {
     log: 'color: black',
-    highlight: 'background-color: yellow; color: white',
+    highlight: 'background-color: yellow; color: black',
     debug: 'color: blue',
     info: 'color: green',
     warn: 'color: orange',
     ['warn-high']: 'font-size: 20px; background: orange; color: white',
-    error: 'color: red'
+    error: 'color: red',
   }
 
   constructor(params: {
@@ -36,29 +31,25 @@ export class HtmlTransport extends BaseTransport {
       if (!this.domElement || this.domElement.innerHTML === undefined) {
         reject('HtmlTransport: write: Invalid or undefined dom element')
       } else {
-        const {
-          timestamp,
-          level,
-          message
-        } = params
+        const { timestamp, level, message } = params
 
-        let outData = ''
-        const includesData = this.tryGetData(params, outData)
+        // get data as string
+        const { dataAsString, hasData } = this.tryGetData(params)
 
-        const formatTimstamp = `<span>${ timestamp }</span>`
-        const formatMessage = `<span>${ message }</span>`
+        const formatTimstamp = `<span>${timestamp}</span>`
+        const formatMessage = `<span>${message}</span>`
         let formatLevel = ``
-        if (level !== 'log'){
-          formatLevel = `<span style="${ this.levelStyles[level] }">${ level }</span>`
+        if (level !== 'log') {
+          formatLevel = `<span style="${this.levelStyles[level]}">${level}</span>`
         } else {
-          formatLevel = `<span>${ level }</span>`
+          formatLevel = `<span>${level}</span>`
         }
 
-        let outHtml = `${ formatTimstamp } ${ formatLevel }: ${ formatMessage }`
-        if (includesData){
-          outHtml = `${ outHtml }: $ outData }<br/>`
+        let outHtml = `${formatTimstamp} ${formatLevel}: ${formatMessage}`
+        if (hasData) {
+          outHtml = `${outHtml}: $ dataAsString }<br/>`
         } else {
-          outHtml = `${ outHtml }<br/>`
+          outHtml = `${outHtml}<br/>`
         }
 
         this.domElement.innerHTML += outHtml

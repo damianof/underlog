@@ -1,3 +1,3 @@
 export interface ITimestampService {
-    getTimestamp(): string;
+  getTimestamp(): string
 }

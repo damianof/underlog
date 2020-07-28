@@ -1,10 +1,5 @@
-import { 
-  ILogTransport, 
-  ILogTransportWriteParams 
-} from '../ILogTransport'
-import { 
-  BaseTransport 
-} from './BaseTransport'
+import { ILogTransport, ILogTransportWriteParams } from '../ILogTransport'
+import { BaseTransport } from './BaseTransport'
 
 export class ChromeTransport extends BaseTransport {
   private readonly prefix: string = Object.freeze('%c ')
@@ -15,7 +10,7 @@ export class ChromeTransport extends BaseTransport {
     info: 'background: green; color: white',
     warn: 'background: orange; color: white',
     ['warn-high']: 'font-size: 20px; background: orange; color: white',
-    error: 'background: red; color: white'
+    error: 'background: red; color: white',
   }
 
   constructor(params: {
@@ -31,31 +26,27 @@ export class ChromeTransport extends BaseTransport {
 
   async write(params: ILogTransportWriteParams): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
-      const {
-        timestamp,
-        level,
-        message
-      } = params
+      const { timestamp, level, message } = params
 
-      let outData = ''
-      const includesData = this.tryGetData(params, outData)
-      
+      // get data as string
+      const { dataAsString, hasData } = this.tryGetData(params)
+
       let isChrome = false
       if (navigator) {
         isChrome = /chrome/gi.test(navigator.userAgent)
       }
 
-      if (level !== 'log' && isChrome){
-        const outMessage = `${ timestamp } ${ this.prefix + level }: ${ message }`
-        if (includesData){
-          console.log(outMessage, this.levelStyles[level], outData)
+      if (level !== 'log' && isChrome) {
+        const outMessage = `${timestamp} ${this.prefix + level}: ${message}`
+        if (hasData) {
+          console.log(outMessage, this.levelStyles[level], dataAsString)
         } else {
           console.log(outMessage, this.levelStyles[level])
         }
       } else {
-        const outMessage = `${ timestamp } ${ level }: ${ message }`
-        if (includesData){
-          console.log(outMessage, outData)
+        const outMessage = `${timestamp} ${level}: ${message}`
+        if (hasData) {
+          console.log(outMessage, dataAsString)
         } else {
           console.log(outMessage)
         }

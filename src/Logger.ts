@@ -1,36 +1,29 @@
 import { ITimestampService } from './ITimestampService'
-import { 
-  ILogTransport, 
-  ILogTransportWriteParams 
-} from './ILogTransport'
-import {
-  MomentTimestampService
-} from './timeservices'
-import {
-  DefaultTransport
-} from './transports'
+import { ILogTransport, ILogTransportWriteParams } from './ILogTransport'
+import { MomentTimestampService } from './timeservices'
+import { DefaultTransport } from './transports'
 
-export interface IUnderLog {
+export interface ILogger {
   canProceed(params: {
     transportLevel: string
     transportLevelOnly: boolean
     level: string
   }): Promise<boolean>
 
-  transportsWrite(params: ILogTransportWriteParams,): Promise<boolean>
+  transportsWrite(params: ILogTransportWriteParams): Promise<boolean>
 
   log(level: string, message: string, data?: any): void
   highlight(message: string, data?: any): void
   debug(message: string, data?: any): void
 }
 
-export interface IUnderLogOptions {
-  levels?: string[] 
-  transports?: ILogTransport[] 
-  timestampService?: ITimestampService 
+export interface ILoggerOptions {
+  levels?: string[]
+  transports?: ILogTransport[]
+  timestampService?: ITimestampService
 }
 
-export class UnderLog implements IUnderLog {
+export class Logger implements ILogger {
   private supportedLevels!: string[]
   private transports!: ILogTransport[]
   private timestampService!: ITimestampService
@@ -39,16 +32,12 @@ export class UnderLog implements IUnderLog {
     if (this.timestampService) {
       return this.timestampService.getTimestamp()
     }
-    return (new Date()).toString()
+    return new Date().toString()
   }
 
-  constructor(options?: IUnderLogOptions) {
+  constructor(options?: ILoggerOptions) {
     if (options) {
-      const {
-        levels,
-        transports,
-        timestampService
-      } = options
+      const { levels, transports, timestampService } = options
 
       this.initLevels(levels)
       this.initTransports(transports)
@@ -76,8 +65,8 @@ export class UnderLog implements IUnderLog {
       this.transports = [
         new DefaultTransport({
           level: 'error',
-          levelOnly: false
-        })
+          levelOnly: false,
+        }),
       ]
     }
   }
@@ -97,27 +86,31 @@ export class UnderLog implements IUnderLog {
   }): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       let result = false
-      const {
-        transportLevel,
-        transportLevelOnly,
-        level
-      } = params
+      const { transportLevel, transportLevelOnly, level } = params
 
       if (transportLevelOnly) {
         // log only the level specified in transportLevel
-        result = (transportLevel === level)
+        result = transportLevel === level
       } else {
         // log from level specified in transport level and higher
         // 'highlight' and 'log' always proceed
-        if (transportLevel === level || ['log', 'highlight'].indexOf(level) > -1) {
+        if (
+          transportLevel === level ||
+          ['log', 'highlight'].indexOf(level) > -1
+        ) {
           result = true
         } else {
           // if level is not 'log', 'highlight', or 'error', we can proceed
           // as long as level is one of the previous levels before transportLevel value
           const supportedLevels = this.supportedLevels
-          const currentTransportLevelIndex = supportedLevels.indexOf(transportLevel)
+          const currentTransportLevelIndex = supportedLevels.indexOf(
+            transportLevel
+          )
           if (currentTransportLevelIndex > 1) {
-            const previousLevels = supportedLevels.slice(0, currentTransportLevelIndex)
+            const previousLevels = supportedLevels.slice(
+              0,
+              currentTransportLevelIndex
+            )
             result = previousLevels.includes(level)
           }
         }
@@ -130,11 +123,13 @@ export class UnderLog implements IUnderLog {
   async transportsWrite(params: ILogTransportWriteParams): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       this.transports.forEach(async (transport) => {
-        if (this.canProceed({
-          transportLevel: transport.level,
-          transportLevelOnly: transport.levelOnly,
-          level: params.level
-        })){
+        if (
+          this.canProceed({
+            transportLevel: transport.level,
+            transportLevelOnly: transport.levelOnly,
+            level: params.level,
+          })
+        ) {
           const result = await transport.write(params)
           resolve(result)
         }
@@ -146,7 +141,7 @@ export class UnderLog implements IUnderLog {
     const writeParams: any = {
       timestamp: this.timestamp(),
       level: level,
-      message: message
+      message: message,
     }
 
     if (arguments.length > 2) {
@@ -158,32 +153,31 @@ export class UnderLog implements IUnderLog {
     })
   }
 
-  private logByCheckingData(level: string, message: string, data?: any) {
-    if (arguments.length > 2) {
-      this.log(level, message, data)
+  private logByCheckingData(args: any) {
+    if (args.length > 2) {
+      this.log(args[0], args[1], args[2])
     } else {
-      this.log(level, message)
+      this.log(args[0], args[1])
     }
   }
 
   highlight(message: string, data?: any) {
-    this.logByCheckingData('highlight', message, data)
+    this.logByCheckingData(['highlight', ...arguments])
   }
 
   debug(message: string, data?: any) {
-    this.logByCheckingData('debug', message, data)
+    this.logByCheckingData(['debug', ...arguments])
   }
 
   info(message: string, data?: any): void {
-    this.logByCheckingData('info', message, data)
+    this.logByCheckingData(['info', ...arguments])
   }
 
   warn(message: string, data?: any): void {
-    this.logByCheckingData('warn', message, data)
+    this.logByCheckingData(['warn', ...arguments])
   }
 
   error(message: string, data?: any): void {
-    this.logByCheckingData('error', message, data)
+    this.logByCheckingData(['error', ...arguments])
   }
-
 }

@@ -1,11 +1,10 @@
 import { expect } from 'chai'
-import { UnderLog } from '../../src/UnderLog'
+import { Logger } from '../../src/Logger'
 
-describe('UnderLog.canProceed with transportLevelOnly true', () => {
-
-  const underLog = new UnderLog({
+describe('Logger.canProceed with transportLevelOnly true', () => {
+  const logger = new Logger({
     levels: ['info', 'warn', 'warn-high', 'error'],
-    transports: []
+    transports: [],
   })
   const transportLevelOnly = true
 
@@ -13,70 +12,70 @@ describe('UnderLog.canProceed with transportLevelOnly true', () => {
     const transportLevel = 'log'
 
     it('should return true when level is log ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'log'
+        level: 'log',
       })
       expect(result).to.be.true
     })
 
     it('should return false when level is highlight', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'highlight'
+        level: 'highlight',
       })
       expect(result).to.be.false
     })
 
     it('should return false when level is debug ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'debug'
+        level: 'debug',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is info ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false'
+        level: 'false',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is warn ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false'
+        level: 'false',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is warn-high ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high'
+        level: 'warn-high',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is error ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'error'
+        level: 'error',
       })
-  
+
       expect(result).to.be.false
     })
   })
@@ -85,70 +84,70 @@ describe('UnderLog.canProceed with transportLevelOnly true', () => {
     const transportLevel = 'highlight'
 
     it('should return false when level is log ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'log'
+        level: 'log',
       })
       expect(result).to.be.false
     })
 
     it('should return true when level is highlight ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'highlight'
+        level: 'highlight',
       })
       expect(result).to.be.true
     })
 
     it('should return false when level is debug ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'debug'
+        level: 'debug',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is info ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false'
+        level: 'false',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is warn ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false'
+        level: 'false',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is warn-high ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high'
+        level: 'warn-high',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is error ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'error'
+        level: 'error',
       })
-  
+
       expect(result).to.be.false
     })
   })
@@ -157,70 +156,70 @@ describe('UnderLog.canProceed with transportLevelOnly true', () => {
     const transportLevel = 'debug'
 
     it('should return false when level is log ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'log'
+        level: 'log',
       })
       expect(result).to.be.false
     })
 
     it('should return false when level is highlight ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'highlight'
+        level: 'highlight',
       })
       expect(result).to.be.false
     })
 
     it('should return true when level is debug ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'debug'
+        level: 'debug',
       })
-  
+
       expect(result).to.be.true
     })
 
     it('should return false when level is info ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false'
+        level: 'false',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is warn ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false'
+        level: 'false',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is warn-high ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high'
+        level: 'warn-high',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is error ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'error'
+        level: 'error',
       })
-  
+
       expect(result).to.be.false
     })
   })
@@ -229,70 +228,70 @@ describe('UnderLog.canProceed with transportLevelOnly true', () => {
     const transportLevel = 'info'
 
     it('should return false when level is log ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'log'
+        level: 'log',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is highlight ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'highlight'
+        level: 'highlight',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is debug ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'debug'
+        level: 'debug',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return true when level is info ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'info'
+        level: 'info',
       })
-  
+
       expect(result).to.be.true
     })
-    
+
     it('should return false when level is warn', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn'
+        level: 'warn',
       })
 
       expect(result).to.be.false
     })
 
     it('should return false when level is warn-high', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high'
+        level: 'warn-high',
       })
 
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is error ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'error'
+        level: 'error',
       })
 
       expect(result).to.be.false
@@ -303,72 +302,72 @@ describe('UnderLog.canProceed with transportLevelOnly true', () => {
     const transportLevel = 'warn'
 
     it('should return false when level is log ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'log'
+        level: 'log',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is highlight ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'highlight'
+        level: 'highlight',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is debug ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'debug'
+        level: 'debug',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is info ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'info'
+        level: 'info',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return true when level is warn ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn'
+        level: 'warn',
       })
-  
+
       expect(result).to.be.true
     })
-    
+
     it('should return false when level is warn-high ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high'
+        level: 'warn-high',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is error ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'error'
+        level: 'error',
       })
-  
+
       expect(result).to.be.false
     })
   })
@@ -377,72 +376,72 @@ describe('UnderLog.canProceed with transportLevelOnly true', () => {
     const transportLevel = 'warn-high'
 
     it('should return false when level is log ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'log'
+        level: 'log',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is highlight ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'highlight'
+        level: 'highlight',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is debug ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'debug'
+        level: 'debug',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is info ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'info'
+        level: 'info',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is warn ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn'
+        level: 'warn',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return true when level is warn-high ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high'
+        level: 'warn-high',
       })
-  
+
       expect(result).to.be.true
     })
-    
+
     it('should return false when level is error ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'error'
+        level: 'error',
       })
-  
+
       expect(result).to.be.false
     })
   })
@@ -451,75 +450,73 @@ describe('UnderLog.canProceed with transportLevelOnly true', () => {
     const transportLevel = 'error'
 
     it('should return false when level is log ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'log'
+        level: 'log',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is highlight ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'highlight'
+        level: 'highlight',
       })
-  
+
       expect(result).to.be.false
     })
 
     it('should return false when level is debug ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'debug'
+        level: 'debug',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is info ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'info'
+        level: 'info',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is warn ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn'
+        level: 'warn',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return false when level is warn-high ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high'
+        level: 'warn-high',
       })
-  
+
       expect(result).to.be.false
     })
-    
+
     it('should return true when level is error ', async () => {
-      const result = await underLog.canProceed({
+      const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'error'
+        level: 'error',
       })
-  
+
       expect(result).to.be.true
     })
   })
-
-    
 })

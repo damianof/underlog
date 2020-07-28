@@ -1,1 +1,1 @@
-export { MomentTimestampService } from './MomentTimestampService';
+export { MomentTimestampService } from './MomentTimestampService'
