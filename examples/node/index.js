@@ -1,49 +1,12 @@
-//const UnderLog = require('underlog') .default;
 const { UnderLog, StdErrTransport } = require('underlog');
 
-console.log(UnderLog, StdErrTransport)
-
+// setup StdErr transport
 const stdErrTransport = new StdErrTransport({
   level: 'error',
   levelOnly: false
 });
-// stdErrTransport.write({
-//   timestamp: new Date(),
-//   level: 'info',
-//   message: 'node logging test'
-// }).then((result) => {
-//   console.log('result', result);
-// });
 
-// if using Typescript
-// interface UnderLog {
-//   info(message: string, data?: any): void;
-// }
-// UnderLog.prototype['info'] = function(message, data) {
-//   const level = 'info'
-//   if (arguments.length > 1) {
-//     this.log(level, message, data)
-//   } else {
-//     this.log(level, message)
-//   }
-// };
-// UnderLog.prototype['warn'] = function(message, data) {
-//   const level = 'warn'
-//   if (arguments.length > 1) {
-//     this.log(level, message, data)
-//   } else {
-//     this.log(level, message)
-//   }
-// };
-// UnderLog.prototype['error'] = function(message, data) {
-//   const level = 'error'
-//   if (arguments.length > 1) {
-//     this.log(level, message, data)
-//   } else {
-//     this.log(level, message)
-//   }
-// };
-
+// setup UnderLog
 const logger = new UnderLog({
   //levels: ['info', 'warn', 'warn-high', 'error'],
   transports: [stdErrTransport]
@@ -77,6 +40,3 @@ logger.debug('test debug', data);
 logger.info('test info', data);
 logger.warn('test warn', data);
 logger.error('test error', data);
-
-
-

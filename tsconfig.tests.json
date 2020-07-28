@@ -4,10 +4,7 @@
     "module": "commonjs", //"commonjs", //'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'esnext'
     "outDir": "lib",
     "strict": true,
-    "declaration": true,
-    "preserveSymlinks": false,
-    "stripInternal": true,
-    //"skipLibCheck": true,
+    "declaration": false,
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
