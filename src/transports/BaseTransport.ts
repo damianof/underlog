@@ -25,7 +25,7 @@ export abstract class BaseTransport implements ILogTransport {
   tryGetData(params: ILogTransportWriteParams, outData: string): boolean {
     outData = ''
     const includesData = Object.keys(params).length === 4
-		
+    
     // try to stringify data if is JSON
     if (includesData){
       if (!params.data) {

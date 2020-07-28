@@ -5,10 +5,10 @@ import {
 } from './ILogTransport'
 import {
   MomentTimestampService
-} from './timeservices/MomentTimestampService'
+} from './timeservices'
 import {
   DefaultTransport
-} from './transports/DefaultTransport'
+} from './transports'
 
 export interface IUnderLog {
   canProceed(params: {
@@ -35,7 +35,7 @@ export class UnderLog implements IUnderLog {
   private transports!: ILogTransport[]
   private timestampService!: ITimestampService
 
-  private get timestamp(): string {
+  private timestamp(): string {
     if (this.timestampService) {
       return this.timestampService.getTimestamp()
     }
@@ -144,7 +144,7 @@ export class UnderLog implements IUnderLog {
 
   log(level: string, message: string, data?: any): void {
     const writeParams: any = {
-      timestamp: this.timestamp,
+      timestamp: this.timestamp(),
       level: level,
       message: message
     }

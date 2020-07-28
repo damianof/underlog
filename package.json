@@ -1,48 +1,49 @@
 {
-	"name": "underlog",
-	"version": "0.8.9",
-	"description": "Logger that can support different clients (Browser, Node, custom, etc)",
-	"main": "lib/index.js",
-	"types": "lib/index.d.ts",
-	"scripts": {
-		"test": "mocha -r ts-node/register tests/**/*.spec.ts",
-		"build": "tsc"
-	},
-	"dependencies": {
-		"moment": "^2.27.0"
-	},
-	"devDependencies": {
-		"@types/chai": "^4.2.12",
-		"@types/jsdom": "^16.2.3",
-		"@types/mocha": "^8.0.0",
-		"@types/moment": "^2.13.0",
-		"@types/node": "^14.0.26",
-		"chai": "^4.2.0",
-		"jsdom": "16.3.0",
-		"jsdom-global": "3.0.2",
-		"mocha": "^8.0.1",
-		"ts-node": "^8.10.2",
-		"tslib": "^2.0.0",
-		"typescript": "^3.7.5"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/damianof/underlog.git"
-	},
-	"keywords": [
-		"log",
-		"colors",
-		"console",
-		"browser",
-		"node"
-	],
-	"author": "Damiano Fusco",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/damianof/underlog/issues"
-	},
-	"homepage": "https://github.com/damianof/underlog#readme",
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org/"
-	}
+  "name": "underlog",
+  "version": "0.9.0",
+  "description": "Logger that can support different clients (Browser, Node, custom, etc)",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "TS_NODE_PROJECT='./tsconfig.tests.json' mocha -r ts-node/register tests/**/*.spec.ts",
+    "build-tests": "TS_NODE_PROJECT='./tsconfig.tests.json' tsc",
+    "build": "tsc --preserveSymlinks true"
+  },
+  "dependencies": {
+    "moment": "^2.27.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/jsdom": "^16.2.3",
+    "@types/mocha": "^8.0.0",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^14.0.26",
+    "chai": "^4.2.0",
+    "jsdom": "16.3.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "^8.0.1",
+    "ts-node": "^8.10.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.7.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damianof/underlog.git"
+  },
+  "keywords": [
+    "log",
+    "colors",
+    "console",
+    "browser",
+    "node"
+  ],
+  "author": "Damiano Fusco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damianof/underlog/issues"
+  },
+  "homepage": "https://github.com/damianof/underlog#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }

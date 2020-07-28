@@ -8,7 +8,7 @@ import {
 
 export class ChromeTransport extends BaseTransport {
   private readonly prefix: string = Object.freeze('%c ')
-	private readonly levelStyles: { [key: string]: string } = {
+  private readonly levelStyles: { [key: string]: string } = {
     log: 'background: blue; color: white',
     highlight: 'background: yellow;',
     debug: 'background: blue; color: white',

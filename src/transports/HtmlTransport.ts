@@ -8,7 +8,7 @@ import {
 
 export class HtmlTransport extends BaseTransport {
   private readonly domElement!: HTMLElement
-	private readonly levelStyles: { [key: string]: string } = {
+  private readonly levelStyles: { [key: string]: string } = {
     log: 'color: black',
     highlight: 'background-color: yellow; color: white',
     debug: 'color: blue',

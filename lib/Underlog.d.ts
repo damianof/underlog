@@ -20,7 +20,7 @@ export declare class UnderLog implements IUnderLog {
     private supportedLevels;
     private transports;
     private timestampService;
-    private get timestamp();
+    private timestamp;
     constructor(options?: IUnderLogOptions);
     private initLevels;
     private initTransports;

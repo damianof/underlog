@@ -12,11 +12,11 @@ describe('ChromeTransport.write', () => {
 
   const timestamp = (new Date()).toString()
 
-	const transport = new ChromeTransport({
+  const transport = new ChromeTransport({
     level: 'info',
     levelOnly: false,
     levelStyles: undefined
-	})
+  })
 
   before(() => {
     global.window = new JSDOM('') as any
@@ -25,29 +25,29 @@ describe('ChromeTransport.write', () => {
     } as any
   }) 
 
-	describe('write: log', () => {
+  describe('write: log', () => {
 
-		it('should return true when level is log ', async () => {
-			const result = await transport.write({
+    it('should return true when level is log ', async () => {
+      const result = await transport.write({
         timestamp: timestamp,
         level: 'log',
         message: 'unit tests'
-			})
-			expect(result).to.be.true
-		})
+      })
+      expect(result).to.be.true
+    })
 
   })
 
   describe('write: info', () => {
 
-		it('should return true when level is info ', async () => {
-			const result = await transport.write({
+    it('should return true when level is info ', async () => {
+      const result = await transport.write({
         timestamp: timestamp,
         level: 'info',
         message: 'unit tests'
-			})
-			expect(result).to.be.true
-		})
+      })
+      expect(result).to.be.true
+    })
 
   })
   

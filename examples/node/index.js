@@ -1,11 +1,10 @@
 //const UnderLog = require('underlog') .default;
-const { UnderLog, transports } = require('underlog');
-const { StdErrTransport } = transports
+const { UnderLog, StdErrTransport } = require('underlog');
 
 console.log(UnderLog, StdErrTransport)
 
 const stdErrTransport = new StdErrTransport({
-  level: 'info',
+  level: 'error',
   levelOnly: false
 });
 // stdErrTransport.write({
@@ -20,33 +19,33 @@ const stdErrTransport = new StdErrTransport({
 // interface UnderLog {
 //   info(message: string, data?: any): void;
 // }
-UnderLog.prototype['info'] = function(message, data) {
-  const level = 'info'
-  if (arguments.length > 1) {
-    this.log(level, message, data)
-  } else {
-    this.log(level, message)
-  }
-};
-UnderLog.prototype['warn'] = function(message, data) {
-  const level = 'warn'
-  if (arguments.length > 1) {
-    this.log(level, message, data)
-  } else {
-    this.log(level, message)
-  }
-};
-UnderLog.prototype['error'] = function(message, data) {
-  const level = 'error'
-  if (arguments.length > 1) {
-    this.log(level, message, data)
-  } else {
-    this.log(level, message)
-  }
-};
+// UnderLog.prototype['info'] = function(message, data) {
+//   const level = 'info'
+//   if (arguments.length > 1) {
+//     this.log(level, message, data)
+//   } else {
+//     this.log(level, message)
+//   }
+// };
+// UnderLog.prototype['warn'] = function(message, data) {
+//   const level = 'warn'
+//   if (arguments.length > 1) {
+//     this.log(level, message, data)
+//   } else {
+//     this.log(level, message)
+//   }
+// };
+// UnderLog.prototype['error'] = function(message, data) {
+//   const level = 'error'
+//   if (arguments.length > 1) {
+//     this.log(level, message, data)
+//   } else {
+//     this.log(level, message)
+//   }
+// };
 
 const logger = new UnderLog({
-  levels: ['info', 'warn', 'warn-high', 'error'],
+  //levels: ['info', 'warn', 'warn-high', 'error'],
   transports: [stdErrTransport]
 });
 

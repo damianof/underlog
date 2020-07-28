@@ -3,10 +3,10 @@ import { UnderLog } from '../../src/UnderLog'
 
 describe('UnderLog.log with transportLevelOnly false', () => {
 
-	const underLog = new UnderLog({
-		levels: ['info', 'warn', 'warn-high', 'error']
-	})
-	const transportLevelOnly = false
+  const underLog = new UnderLog({
+    levels: ['info', 'warn', 'warn-high', 'error']
+  })
+  const transportLevelOnly = false
 
   it('level log ', async () => {
     underLog.log('log', 'unit tests')

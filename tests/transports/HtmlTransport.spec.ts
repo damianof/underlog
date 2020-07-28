@@ -11,7 +11,7 @@ describe('HtmlTransport.write', () => {
 
   const timestamp = (new Date()).toString()
 
-	describe('write: log', () => {
+  describe('write: log', () => {
     const domElement: any = {
       innerHTML: ''
     }
@@ -22,15 +22,15 @@ describe('HtmlTransport.write', () => {
       domElement: domElement
     })
 
-		it('should return true when level is log ', async () => {
-			const result = await transport.write({
+    it('should return true when level is log ', async () => {
+      const result = await transport.write({
         timestamp: timestamp,
         level: 'log',
         message: 'unit tests'
-			})
+      })
       console.log('domElement', domElement.innerHTML)
-			expect(result).to.be.true
-		})
+      expect(result).to.be.true
+    })
 
   })
 
@@ -45,15 +45,15 @@ describe('HtmlTransport.write', () => {
       domElement: domElement
     })
 
-		it('should return true when level is info ', async () => {
-			const result = await transport.write({
+    it('should return true when level is info ', async () => {
+      const result = await transport.write({
         timestamp: timestamp,
         level: 'info',
         message: 'unit tests'
-			})
+      })
       console.log('domElement', domElement.innerHTML)
-			expect(result).to.be.true
-		})
+      expect(result).to.be.true
+    })
 
   })
 
@@ -68,15 +68,15 @@ describe('HtmlTransport.write', () => {
       domElement: domElement
     })
 
-		it('should return true when level is warn ', async () => {
-			const result = await transport.write({
+    it('should return true when level is warn ', async () => {
+      const result = await transport.write({
         timestamp: timestamp,
         level: 'warn',
         message: 'unit tests'
-			})
+      })
       console.log('domElement', domElement.innerHTML)
-			expect(result).to.be.true
-		})
+      expect(result).to.be.true
+    })
 
   })
 
