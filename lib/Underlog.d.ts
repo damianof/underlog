@@ -21,7 +21,10 @@ export declare class UnderLog implements IUnderLog {
     private transports;
     private timestampService;
     private get timestamp();
-    constructor(options: IUnderLogOptions);
+    constructor(options?: IUnderLogOptions);
+    private initLevels;
+    private initTransports;
+    private initTimestampService;
     canProceed(params: {
         transportLevel: string;
         transportLevelOnly: boolean;
@@ -29,6 +32,10 @@ export declare class UnderLog implements IUnderLog {
     }): Promise<boolean>;
     transportsWrite(params: ILogTransportWriteParams): Promise<boolean>;
     log(level: string, message: string, data?: any): void;
+    private logByCheckingData;
     highlight(message: string, data?: any): void;
     debug(message: string, data?: any): void;
+    info(message: string, data?: any): void;
+    warn(message: string, data?: any): void;
+    error(message: string, data?: any): void;
 }

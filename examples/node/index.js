@@ -1,4 +1,8 @@
-const { UnderLog, StdErrTransport } = require('underlog');
+//const UnderLog = require('underlog') .default;
+const { UnderLog, transports } = require('underlog');
+const { StdErrTransport } = transports
+
+console.log(UnderLog, StdErrTransport)
 
 const stdErrTransport = new StdErrTransport({
   level: 'info',

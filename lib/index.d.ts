@@ -1,10 +1,9 @@
-import { UnderLog } from './UnderLog';
-import { BaseTransport, DefaultTransport, ChromeTransport, StdErrTransport } from './transports';
-declare const _default: {
-    UnderLog: typeof UnderLog;
+import { BaseTransport, DefaultTransport, ChromeTransport, HtmlTransport, StdErrTransport } from './transports';
+export declare const transports: {
     BaseTransport: typeof BaseTransport;
     DefaultTransport: typeof DefaultTransport;
     ChromeTransport: typeof ChromeTransport;
+    HtmlTransport: typeof HtmlTransport;
     StdErrTransport: typeof StdErrTransport;
 };
-export = _default;
+export * from './UnderLog';

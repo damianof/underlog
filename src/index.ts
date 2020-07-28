@@ -1,17 +1,17 @@
 import { 
-  UnderLog 
-} from './UnderLog'
-import { 
   BaseTransport,
   DefaultTransport,
   ChromeTransport,
+  HtmlTransport,
   StdErrTransport
 } from './transports'
 
-export = {
-  UnderLog,
+export const transports =  {
   BaseTransport,
   DefaultTransport,
   ChromeTransport,
+  HtmlTransport,
   StdErrTransport
 }
+
+export * from './UnderLog'
