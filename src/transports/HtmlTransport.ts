@@ -47,7 +47,7 @@ export class HtmlTransport extends BaseTransport {
 
         let outHtml = `${formatTimstamp} ${formatLevel}: ${formatMessage}`
         if (hasData) {
-          outHtml = `${outHtml}: $ dataAsString }<br/>`
+          outHtml = `${outHtml}: ${dataAsString}<br/>`
         } else {
           outHtml = `${outHtml}<br/>`
         }
