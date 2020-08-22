@@ -7,7 +7,7 @@
   "scripts": {
     "test": "TS_NODE_PROJECT='./tsconfig.tests.json' mocha -r ts-node/register tests/**/*.spec.ts",
     "build-tests": "TS_NODE_PROJECT='./tsconfig.tests.json' tsc",
-    "build": "tsc --preserveSymlinks true",
+    "build": "tsc --preserveSymlinks true; npm run rollup",
     "pretty": "prettier --write '**/*.ts'",
     "rollup-browser": "rollup -c rollup.browser.js",
     "rollup": "npm run rollup-browser",
