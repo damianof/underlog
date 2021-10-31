@@ -6,7 +6,7 @@ export declare class HtmlTransport extends BaseTransport {
   constructor(params: {
     level: string
     levelOnly: boolean
-    domElement: HTMLElement
+    domElement: any
     levelStyles?: {
       [key: string]: string
     }

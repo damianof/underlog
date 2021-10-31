@@ -2,7 +2,7 @@ import { ILogTransport, ILogTransportWriteParams } from '../ILogTransport'
 import { BaseTransport } from './BaseTransport'
 
 export class HtmlTransport extends BaseTransport {
-  private readonly domElement!: HTMLElement
+  private readonly domElement!: any //HTMLElement
   private readonly levelStyles: { [key: string]: string } = {
     log: 'color: black',
     highlight: 'background-color: yellow; color: black',
@@ -16,7 +16,7 @@ export class HtmlTransport extends BaseTransport {
   constructor(params: {
     level: string
     levelOnly: boolean
-    domElement: HTMLElement
+    domElement: any //HTMLElement
     levelStyles?: { [key: string]: string }
   }) {
     super(params)
