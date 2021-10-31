@@ -1,6 +1,6 @@
 # underlog
 
-[![npm version](https://badge.fury.io/js/underlog.svg)](https://badge.fury.io/js/underlog)
+[![npm version](https://badge.fury.io/js/underlog.svg?1.1.2)](https://badge.fury.io/js/underlog)
 
 Logger that can support different clients (Browser, Node, custom, etc)
 

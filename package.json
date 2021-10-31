@@ -1,6 +1,6 @@
 {
   "name": "underlog",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Logger that can support different clients (Browser, Node, custom, etc)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
