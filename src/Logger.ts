@@ -123,13 +123,12 @@ export class Logger implements ILogger {
   async transportsWrite(params: ILogTransportWriteParams): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       this.transports.forEach(async (transport) => {
-        if (
-          this.canProceed({
-            transportLevel: transport.level,
-            transportLevelOnly: transport.levelOnly,
-            level: params.level,
-          })
-        ) {
+        const canProceeed = await this.canProceed({
+          transportLevel: transport.level,
+          transportLevelOnly: transport.levelOnly,
+          level: params.level,
+        })
+        if (canProceeed) {
           const result = await transport.write(params)
           resolve(result)
         }
