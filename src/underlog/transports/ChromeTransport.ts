@@ -26,10 +26,11 @@ export class ChromeTransport extends BaseTransport {
 
   async write(params: ILogTransportWriteParams): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
-      const { timestamp, level } = params
+      const { timestamp } = params
+      const level = (params.level || '').trim()
 
       // get data as string
-      const { dataAsString, hasData } = this.tryGetData(params)
+      const { message, dataRaw, hasData } = this.tryGetData(params)
 
       let isChrome = false
       if (navigator) {
@@ -37,16 +38,18 @@ export class ChromeTransport extends BaseTransport {
       }
 
       if (level !== 'log' && isChrome) {
-        const outMessage = `${timestamp}${this.prefix + level}`.trim()
+        const outMessage = `${timestamp} ${
+          this.prefix + level
+        } ${message}`.trim()
         if (hasData) {
-          console.log(`${outMessage}:`, this.levelStyles[level], dataAsString)
+          console.log(`${outMessage}:`, this.levelStyles[level], ...dataRaw)
         } else {
           console.log(`${outMessage}:`, this.levelStyles[level])
         }
       } else {
-        const outMessage = `${timestamp} ${level}`.trim()
+        const outMessage = `${timestamp} ${level} ${message}`.trim()
         if (hasData) {
-          console.log(`${outMessage}:`, dataAsString)
+          console.log(`${outMessage}:`, ...dataRaw)
         } else {
           console.log(outMessage)
         }

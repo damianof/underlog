@@ -38,10 +38,21 @@ export class Logger implements ILogger {
   constructor(options?: ILoggerOptions) {
     if (options) {
       const { levels, transports, timestampService } = options
-
-      this.initLevels(levels)
-      this.initTransports(transports)
-      this.initTimestampService(timestampService)
+      if (levels) {
+        this.initLevels(levels)
+      } else {
+        this.initLevels()
+      }
+      if (transports && transports.length > 0) {
+        this.initTransports(transports)
+      } else {
+        this.initTransports()
+      }
+      if (timestampService) {
+        this.initTimestampService(timestampService)
+      } else {
+        this.initTimestampService()
+      }
     } else {
       this.initLevels()
       this.initTransports()
@@ -127,6 +138,7 @@ export class Logger implements ILogger {
           transportLevelOnly: transport.levelOnly,
           level: params.level,
         })
+
         if (canProceeed) {
           const result = await transport.write(params)
           resolve(result)
@@ -140,8 +152,15 @@ export class Logger implements ILogger {
     let restOfArgs: any[] = []
     if ((args || []).length > 0) {
       // level is always the first parameter
-      level = args.shift() // extract first parameter and remove it from args
-      if (args.length > 0) {
+      const firstArg = (args[0] || '').toString().trim().toLowerCase()
+      if (this.supportedLevels.indexOf(firstArg) > -1) {
+        level = firstArg
+        args.shift() // remove the first arg from args
+        if (args.length > 0) {
+          restOfArgs = args
+        }
+      } else {
+        level = 'log'
         restOfArgs = args
       }
     }
@@ -158,22 +177,22 @@ export class Logger implements ILogger {
   }
 
   highlight(...args: any) {
-    this.log(args)
+    this.log('highlight', ...args)
   }
 
   debug(...args: any[]) {
-    this.log(args)
+    this.log('debug', ...args)
   }
 
   info(...args: any[]) {
-    this.log(args)
+    this.log('info', ...args)
   }
 
   warn(...args: any[]) {
-    this.log(args)
+    this.log('warn', ...args)
   }
 
   error(...args: any[]) {
-    this.log(args)
+    this.log('error', ...args)
   }
 }

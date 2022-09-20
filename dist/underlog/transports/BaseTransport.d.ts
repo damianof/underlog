@@ -23,5 +23,6 @@ export declare abstract class BaseTransport implements ILogTransport {
         dataAsString: string;
         dataRaw: any[];
         hasData: boolean;
+        message?: string;
     };
 }

@@ -27,22 +27,40 @@ export abstract class BaseTransport implements ILogTransport {
     dataAsString: string
     dataRaw: any[]
     hasData: boolean
+    message?: string
   } {
     let result = {
       dataAsString: '',
       dataRaw: [],
       hasData: false,
+      message: '',
     }
 
     const args = params.args || []
-    result.hasData = args.length > 0
+    result.hasData = args.length > 1
 
-    if (args.length > 0) {
+    if (args.length === 1) {
+      result.message = args[0]
+    } else if (args.length > 1) {
+      result.message = args[0]
+      args.shift()
       result.dataRaw = args
 
       try {
         if (Array.isArray(args)) {
-          result.dataAsString = args.join(', ')
+          result.dataAsString = args
+            .map((o) => {
+              if (typeof o === 'object') {
+                try {
+                  return JSON.stringify(o)
+                } catch {
+                  return o.toString()
+                }
+              } else {
+                return o.toString()
+              }
+            })
+            .join(': ')
         } else {
           result.dataAsString = JSON.stringify(args)
         }

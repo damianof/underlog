@@ -1,64 +1,64 @@
 var K = Object.defineProperty;
-var X = (M, r, s) => r in M ? K(M, r, { enumerable: !0, configurable: !0, writable: !0, value: s }) : M[r] = s;
-var O = (M, r, s) => (X(M, typeof r != "symbol" ? r + "" : r, s), s);
+var X = (w, r, s) => r in w ? K(w, r, { enumerable: !0, configurable: !0, writable: !0, value: s }) : w[r] = s;
+var T = (w, r, s) => (X(w, typeof r != "symbol" ? r + "" : r, s), s);
 var ee = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, Z = { exports: {} };
-(function(M, r) {
-  (function(s, u) {
-    M.exports = u();
+(function(w, r) {
+  (function(s, i) {
+    w.exports = i();
   })(ee, function() {
-    var s = 1e3, u = 6e4, m = 36e5, g = "millisecond", f = "second", p = "minute", D = "hour", y = "day", x = "week", S = "month", B = "quarter", L = "year", H = "date", F = "Invalid Date", V = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, R = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, q = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, J = function(a, n, e) {
-      var i = String(a);
-      return !i || i.length >= n ? a : "" + Array(n + 1 - i.length).join(e) + a;
-    }, Q = { s: J, z: function(a) {
-      var n = -a.utcOffset(), e = Math.abs(n), i = Math.floor(e / 60), t = e % 60;
-      return (n <= 0 ? "+" : "-") + J(i, 2, "0") + ":" + J(t, 2, "0");
-    }, m: function a(n, e) {
+    var s = 1e3, i = 6e4, f = 36e5, g = "millisecond", d = "second", p = "minute", M = "hour", D = "day", b = "week", y = "month", B = "quarter", x = "year", A = "date", F = "Invalid Date", R = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, V = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, q = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, J = function(u, n, e) {
+      var o = String(u);
+      return !o || o.length >= n ? u : "" + Array(n + 1 - o.length).join(e) + u;
+    }, Q = { s: J, z: function(u) {
+      var n = -u.utcOffset(), e = Math.abs(n), o = Math.floor(e / 60), t = e % 60;
+      return (n <= 0 ? "+" : "-") + J(o, 2, "0") + ":" + J(t, 2, "0");
+    }, m: function u(n, e) {
       if (n.date() < e.date())
-        return -a(e, n);
-      var i = 12 * (e.year() - n.year()) + (e.month() - n.month()), t = n.clone().add(i, S), l = e - t < 0, o = n.clone().add(i + (l ? -1 : 1), S);
-      return +(-(i + (e - t) / (l ? t - o : o - t)) || 0);
-    }, a: function(a) {
-      return a < 0 ? Math.ceil(a) || 0 : Math.floor(a);
-    }, p: function(a) {
-      return { M: S, y: L, w: x, d: y, D: H, h: D, m: p, s: f, ms: g, Q: B }[a] || String(a || "").toLowerCase().replace(/s$/, "");
-    }, u: function(a) {
-      return a === void 0;
-    } }, z = "en", A = {};
-    A[z] = q;
-    var N = function(a) {
-      return a instanceof C;
-    }, W = function a(n, e, i) {
+        return -u(e, n);
+      var o = 12 * (e.year() - n.year()) + (e.month() - n.month()), t = n.clone().add(o, y), a = e - t < 0, l = n.clone().add(o + (a ? -1 : 1), y);
+      return +(-(o + (e - t) / (a ? t - l : l - t)) || 0);
+    }, a: function(u) {
+      return u < 0 ? Math.ceil(u) || 0 : Math.floor(u);
+    }, p: function(u) {
+      return { M: y, y: x, w: b, d: D, D: A, h: M, m: p, s: d, ms: g, Q: B }[u] || String(u || "").toLowerCase().replace(/s$/, "");
+    }, u: function(u) {
+      return u === void 0;
+    } }, z = "en", k = {};
+    k[z] = q;
+    var N = function(u) {
+      return u instanceof W;
+    }, C = function u(n, e, o) {
       var t;
       if (!n)
         return z;
       if (typeof n == "string") {
-        var l = n.toLowerCase();
-        A[l] && (t = l), e && (A[l] = e, t = l);
-        var o = n.split("-");
-        if (!t && o.length > 1)
-          return a(o[0]);
+        var a = n.toLowerCase();
+        k[a] && (t = a), e && (k[a] = e, t = a);
+        var l = n.split("-");
+        if (!t && l.length > 1)
+          return u(l[0]);
       } else {
         var c = n.name;
-        A[c] = n, t = c;
+        k[c] = n, t = c;
       }
-      return !i && t && (z = t), t || !i && z;
-    }, v = function(a, n) {
-      if (N(a))
-        return a.clone();
+      return !o && t && (z = t), t || !o && z;
+    }, $ = function(u, n) {
+      if (N(u))
+        return u.clone();
       var e = typeof n == "object" ? n : {};
-      return e.date = a, e.args = arguments, new C(e);
+      return e.date = u, e.args = arguments, new W(e);
     }, h = Q;
-    h.l = W, h.i = N, h.w = function(a, n) {
-      return v(a, { locale: n.$L, utc: n.$u, x: n.$x, $offset: n.$offset });
+    h.l = C, h.i = N, h.w = function(u, n) {
+      return $(u, { locale: n.$L, utc: n.$u, x: n.$x, $offset: n.$offset });
     };
-    var C = function() {
-      function a(e) {
-        this.$L = W(e.locale, null, !0), this.parse(e);
+    var W = function() {
+      function u(e) {
+        this.$L = C(e.locale, null, !0), this.parse(e);
       }
-      var n = a.prototype;
+      var n = u.prototype;
       return n.parse = function(e) {
-        this.$d = function(i) {
-          var t = i.date, l = i.utc;
+        this.$d = function(o) {
+          var t = o.date, a = o.utc;
           if (t === null)
             return new Date(NaN);
           if (h.u(t))
@@ -66,10 +66,10 @@ var ee = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
           if (t instanceof Date)
             return new Date(t);
           if (typeof t == "string" && !/Z$/i.test(t)) {
-            var o = t.match(V);
-            if (o) {
-              var c = o[2] - 1 || 0, $ = (o[7] || "0").substring(0, 3);
-              return l ? new Date(Date.UTC(o[1], c, o[3] || 1, o[4] || 0, o[5] || 0, o[6] || 0, $)) : new Date(o[1], c, o[3] || 1, o[4] || 0, o[5] || 0, o[6] || 0, $);
+            var l = t.match(R);
+            if (l) {
+              var c = l[2] - 1 || 0, v = (l[7] || "0").substring(0, 3);
+              return a ? new Date(Date.UTC(l[1], c, l[3] || 1, l[4] || 0, l[5] || 0, l[6] || 0, v)) : new Date(l[1], c, l[3] || 1, l[4] || 0, l[5] || 0, l[6] || 0, v);
             }
           }
           return new Date(t);
@@ -81,108 +81,108 @@ var ee = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         return h;
       }, n.isValid = function() {
         return this.$d.toString() !== F;
-      }, n.isSame = function(e, i) {
-        var t = v(e);
-        return this.startOf(i) <= t && t <= this.endOf(i);
-      }, n.isAfter = function(e, i) {
-        return v(e) < this.startOf(i);
-      }, n.isBefore = function(e, i) {
-        return this.endOf(i) < v(e);
-      }, n.$g = function(e, i, t) {
-        return h.u(e) ? this[i] : this.set(t, e);
+      }, n.isSame = function(e, o) {
+        var t = $(e);
+        return this.startOf(o) <= t && t <= this.endOf(o);
+      }, n.isAfter = function(e, o) {
+        return $(e) < this.startOf(o);
+      }, n.isBefore = function(e, o) {
+        return this.endOf(o) < $(e);
+      }, n.$g = function(e, o, t) {
+        return h.u(e) ? this[o] : this.set(t, e);
       }, n.unix = function() {
         return Math.floor(this.valueOf() / 1e3);
       }, n.valueOf = function() {
         return this.$d.getTime();
-      }, n.startOf = function(e, i) {
-        var t = this, l = !!h.u(i) || i, o = h.p(e), c = function(j, b) {
-          var k = h.w(t.$u ? Date.UTC(t.$y, b, j) : new Date(t.$y, b, j), t);
-          return l ? k : k.endOf(y);
-        }, $ = function(j, b) {
-          return h.w(t.toDate()[j].apply(t.toDate("s"), (l ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(b)), t);
-        }, d = this.$W, w = this.$M, _ = this.$D, T = "set" + (this.$u ? "UTC" : "");
-        switch (o) {
-          case L:
-            return l ? c(1, 0) : c(31, 11);
-          case S:
-            return l ? c(1, w) : c(0, w + 1);
+      }, n.startOf = function(e, o) {
+        var t = this, a = !!h.u(o) || o, l = h.p(e), c = function(H, O) {
+          var j = h.w(t.$u ? Date.UTC(t.$y, O, H) : new Date(t.$y, O, H), t);
+          return a ? j : j.endOf(D);
+        }, v = function(H, O) {
+          return h.w(t.toDate()[H].apply(t.toDate("s"), (a ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(O)), t);
+        }, m = this.$W, S = this.$M, _ = this.$D, L = "set" + (this.$u ? "UTC" : "");
+        switch (l) {
           case x:
-            var Y = this.$locale().weekStart || 0, P = (d < Y ? d + 7 : d) - Y;
-            return c(l ? _ - P : _ + (6 - P), w);
+            return a ? c(1, 0) : c(31, 11);
           case y:
-          case H:
-            return $(T + "Hours", 0);
+            return a ? c(1, S) : c(0, S + 1);
+          case b:
+            var Y = this.$locale().weekStart || 0, P = (m < Y ? m + 7 : m) - Y;
+            return c(a ? _ - P : _ + (6 - P), S);
           case D:
-            return $(T + "Minutes", 1);
+          case A:
+            return v(L + "Hours", 0);
+          case M:
+            return v(L + "Minutes", 1);
           case p:
-            return $(T + "Seconds", 2);
-          case f:
-            return $(T + "Milliseconds", 3);
+            return v(L + "Seconds", 2);
+          case d:
+            return v(L + "Milliseconds", 3);
           default:
             return this.clone();
         }
       }, n.endOf = function(e) {
         return this.startOf(e, !1);
-      }, n.$set = function(e, i) {
-        var t, l = h.p(e), o = "set" + (this.$u ? "UTC" : ""), c = (t = {}, t[y] = o + "Date", t[H] = o + "Date", t[S] = o + "Month", t[L] = o + "FullYear", t[D] = o + "Hours", t[p] = o + "Minutes", t[f] = o + "Seconds", t[g] = o + "Milliseconds", t)[l], $ = l === y ? this.$D + (i - this.$W) : i;
-        if (l === S || l === L) {
-          var d = this.clone().set(H, 1);
-          d.$d[c]($), d.init(), this.$d = d.set(H, Math.min(this.$D, d.daysInMonth())).$d;
+      }, n.$set = function(e, o) {
+        var t, a = h.p(e), l = "set" + (this.$u ? "UTC" : ""), c = (t = {}, t[D] = l + "Date", t[A] = l + "Date", t[y] = l + "Month", t[x] = l + "FullYear", t[M] = l + "Hours", t[p] = l + "Minutes", t[d] = l + "Seconds", t[g] = l + "Milliseconds", t)[a], v = a === D ? this.$D + (o - this.$W) : o;
+        if (a === y || a === x) {
+          var m = this.clone().set(A, 1);
+          m.$d[c](v), m.init(), this.$d = m.set(A, Math.min(this.$D, m.daysInMonth())).$d;
         } else
-          c && this.$d[c]($);
+          c && this.$d[c](v);
         return this.init(), this;
-      }, n.set = function(e, i) {
-        return this.clone().$set(e, i);
+      }, n.set = function(e, o) {
+        return this.clone().$set(e, o);
       }, n.get = function(e) {
         return this[h.p(e)]();
-      }, n.add = function(e, i) {
-        var t, l = this;
+      }, n.add = function(e, o) {
+        var t, a = this;
         e = Number(e);
-        var o = h.p(i), c = function(w) {
-          var _ = v(l);
-          return h.w(_.date(_.date() + Math.round(w * e)), l);
+        var l = h.p(o), c = function(S) {
+          var _ = $(a);
+          return h.w(_.date(_.date() + Math.round(S * e)), a);
         };
-        if (o === S)
-          return this.set(S, this.$M + e);
-        if (o === L)
-          return this.set(L, this.$y + e);
-        if (o === y)
+        if (l === y)
+          return this.set(y, this.$M + e);
+        if (l === x)
+          return this.set(x, this.$y + e);
+        if (l === D)
           return c(1);
-        if (o === x)
+        if (l === b)
           return c(7);
-        var $ = (t = {}, t[p] = u, t[D] = m, t[f] = s, t)[o] || 1, d = this.$d.getTime() + e * $;
-        return h.w(d, this);
-      }, n.subtract = function(e, i) {
-        return this.add(-1 * e, i);
+        var v = (t = {}, t[p] = i, t[M] = f, t[d] = s, t)[l] || 1, m = this.$d.getTime() + e * v;
+        return h.w(m, this);
+      }, n.subtract = function(e, o) {
+        return this.add(-1 * e, o);
       }, n.format = function(e) {
-        var i = this, t = this.$locale();
+        var o = this, t = this.$locale();
         if (!this.isValid())
           return t.invalidDate || F;
-        var l = e || "YYYY-MM-DDTHH:mm:ssZ", o = h.z(this), c = this.$H, $ = this.$m, d = this.$M, w = t.weekdays, _ = t.months, T = function(b, k, U, E) {
-          return b && (b[k] || b(i, l)) || U[k].slice(0, E);
-        }, Y = function(b) {
-          return h.s(c % 12 || 12, b, "0");
-        }, P = t.meridiem || function(b, k, U) {
-          var E = b < 12 ? "AM" : "PM";
+        var a = e || "YYYY-MM-DDTHH:mm:ssZ", l = h.z(this), c = this.$H, v = this.$m, m = this.$M, S = t.weekdays, _ = t.months, L = function(O, j, U, E) {
+          return O && (O[j] || O(o, a)) || U[j].slice(0, E);
+        }, Y = function(O) {
+          return h.s(c % 12 || 12, O, "0");
+        }, P = t.meridiem || function(O, j, U) {
+          var E = O < 12 ? "AM" : "PM";
           return U ? E.toLowerCase() : E;
-        }, j = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: d + 1, MM: h.s(d + 1, 2, "0"), MMM: T(t.monthsShort, d, _, 3), MMMM: T(_, d), D: this.$D, DD: h.s(this.$D, 2, "0"), d: String(this.$W), dd: T(t.weekdaysMin, this.$W, w, 2), ddd: T(t.weekdaysShort, this.$W, w, 3), dddd: w[this.$W], H: String(c), HH: h.s(c, 2, "0"), h: Y(1), hh: Y(2), a: P(c, $, !0), A: P(c, $, !1), m: String($), mm: h.s($, 2, "0"), s: String(this.$s), ss: h.s(this.$s, 2, "0"), SSS: h.s(this.$ms, 3, "0"), Z: o };
-        return l.replace(R, function(b, k) {
-          return k || j[b] || o.replace(":", "");
+        }, H = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: m + 1, MM: h.s(m + 1, 2, "0"), MMM: L(t.monthsShort, m, _, 3), MMMM: L(_, m), D: this.$D, DD: h.s(this.$D, 2, "0"), d: String(this.$W), dd: L(t.weekdaysMin, this.$W, S, 2), ddd: L(t.weekdaysShort, this.$W, S, 3), dddd: S[this.$W], H: String(c), HH: h.s(c, 2, "0"), h: Y(1), hh: Y(2), a: P(c, v, !0), A: P(c, v, !1), m: String(v), mm: h.s(v, 2, "0"), s: String(this.$s), ss: h.s(this.$s, 2, "0"), SSS: h.s(this.$ms, 3, "0"), Z: l };
+        return a.replace(V, function(O, j) {
+          return j || H[O] || l.replace(":", "");
         });
       }, n.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
-      }, n.diff = function(e, i, t) {
-        var l, o = h.p(i), c = v(e), $ = (c.utcOffset() - this.utcOffset()) * u, d = this - c, w = h.m(this, c);
-        return w = (l = {}, l[L] = w / 12, l[S] = w, l[B] = w / 3, l[x] = (d - $) / 6048e5, l[y] = (d - $) / 864e5, l[D] = d / m, l[p] = d / u, l[f] = d / s, l)[o] || d, t ? w : h.a(w);
+      }, n.diff = function(e, o, t) {
+        var a, l = h.p(o), c = $(e), v = (c.utcOffset() - this.utcOffset()) * i, m = this - c, S = h.m(this, c);
+        return S = (a = {}, a[x] = S / 12, a[y] = S, a[B] = S / 3, a[b] = (m - v) / 6048e5, a[D] = (m - v) / 864e5, a[M] = m / f, a[p] = m / i, a[d] = m / s, a)[l] || m, t ? S : h.a(S);
       }, n.daysInMonth = function() {
-        return this.endOf(S).$D;
+        return this.endOf(y).$D;
       }, n.$locale = function() {
-        return A[this.$L];
-      }, n.locale = function(e, i) {
+        return k[this.$L];
+      }, n.locale = function(e, o) {
         if (!e)
           return this.$L;
-        var t = this.clone(), l = W(e, i, !0);
-        return l && (t.$L = l), t;
+        var t = this.clone(), a = C(e, o, !0);
+        return a && (t.$L = a), t;
       }, n.clone = function() {
         return h.w(this.$d, this);
       }, n.toDate = function() {
@@ -193,17 +193,17 @@ var ee = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
         return this.$d.toISOString();
       }, n.toString = function() {
         return this.$d.toUTCString();
-      }, a;
-    }(), G = C.prototype;
-    return v.prototype = G, [["$ms", g], ["$s", f], ["$m", p], ["$H", D], ["$W", y], ["$M", S], ["$y", L], ["$D", H]].forEach(function(a) {
-      G[a[1]] = function(n) {
-        return this.$g(n, a[0], a[1]);
+      }, u;
+    }(), G = W.prototype;
+    return $.prototype = G, [["$ms", g], ["$s", d], ["$m", p], ["$H", M], ["$W", D], ["$M", y], ["$y", x], ["$D", A]].forEach(function(u) {
+      G[u[1]] = function(n) {
+        return this.$g(n, u[0], u[1]);
       };
-    }), v.extend = function(a, n) {
-      return a.$i || (a(n, C, v), a.$i = !0), v;
-    }, v.locale = W, v.isDayjs = N, v.unix = function(a) {
-      return v(1e3 * a);
-    }, v.en = A[z], v.Ls = A, v.p = {}, v;
+    }), $.extend = function(u, n) {
+      return u.$i || (u(n, W, $), u.$i = !0), $;
+    }, $.locale = C, $.isDayjs = N, $.unix = function(u) {
+      return $(1e3 * u);
+    }, $.en = k[z], $.Ls = k, $.p = {}, $;
   });
 })(Z);
 const te = Z.exports;
@@ -214,23 +214,35 @@ class ne {
 }
 class I {
   constructor(r) {
-    O(this, "level");
-    O(this, "levelOnly");
+    T(this, "level");
+    T(this, "levelOnly");
     this.level = Object.freeze(r.level), this.levelOnly = Object.freeze(r.levelOnly);
   }
   tryGetData(r) {
     let s = {
       dataAsString: "",
       dataRaw: [],
-      hasData: !1
+      hasData: !1,
+      message: ""
     };
-    const u = r.args || [];
-    if (s.hasData = u.length > 0, u.length > 0) {
-      s.dataRaw = u;
+    const i = r.args || [];
+    if (s.hasData = i.length > 1, i.length === 1)
+      s.message = i[0];
+    else if (i.length > 1) {
+      s.message = i[0], i.shift(), s.dataRaw = i;
       try {
-        return Array.isArray(u) ? s.dataAsString = u.join(", ") : s.dataAsString = JSON.stringify(u), s;
+        return Array.isArray(i) ? s.dataAsString = i.map((f) => {
+          if (typeof f == "object")
+            try {
+              return JSON.stringify(f);
+            } catch {
+              return f.toString();
+            }
+          else
+            return f.toString();
+        }).join(": ") : s.dataAsString = JSON.stringify(i), s;
       } catch {
-        return s.dataAsString = u.join(", "), s;
+        return s.dataAsString = i.join(", "), s;
       }
     }
     return s;
@@ -242,16 +254,16 @@ class se extends I {
   }
   async write(r) {
     return new Promise((s) => {
-      const { timestamp: u, level: m, args: g } = r, f = `${u} ${m}`;
-      g ? console.log(`${f}:`, ...g) : console.log(f), s(!0);
+      const { timestamp: i, level: f, args: g } = r, d = `${i} ${f}`;
+      g ? console.log(`${d}:`, ...g) : console.log(d), s(!0);
     });
   }
 }
 class ie extends I {
   constructor(s) {
     super(s);
-    O(this, "prefix", Object.freeze("%c "));
-    O(this, "levelStyles", {
+    T(this, "prefix", Object.freeze("%c "));
+    T(this, "levelStyles", {
       log: "background: blue; color: white",
       highlight: "background: yellow;",
       debug: "background: blue; color: white",
@@ -263,25 +275,25 @@ class ie extends I {
     s.levelStyles && (this.levelStyles = Object.freeze(s.levelStyles));
   }
   async write(s) {
-    return new Promise((u) => {
-      const { timestamp: m, level: g } = s, { dataAsString: f, hasData: p } = this.tryGetData(s);
+    return new Promise((i) => {
+      const { timestamp: f } = s, g = (s.level || "").trim(), { message: d, dataRaw: p, hasData: M } = this.tryGetData(s);
       let D = !1;
       if (navigator && (D = /chrome/gi.test(navigator.userAgent)), g !== "log" && D) {
-        const y = `${m}${this.prefix + g}`.trim();
-        p ? console.log(`${y}:`, this.levelStyles[g], f) : console.log(`${y}:`, this.levelStyles[g]);
+        const b = `${f} ${this.prefix + g} ${d}`.trim();
+        M ? console.log(`${b}:`, this.levelStyles[g], ...p) : console.log(`${b}:`, this.levelStyles[g]);
       } else {
-        const y = `${m} ${g}`.trim();
-        p ? console.log(`${y}:`, f) : console.log(y);
+        const b = `${f} ${g} ${d}`.trim();
+        M ? console.log(`${b}:`, ...p) : console.log(b);
       }
-      u(!0);
+      i(!0);
     });
   }
 }
 class oe extends I {
   constructor(s) {
     super(s);
-    O(this, "domElement");
-    O(this, "levelStyles", {
+    T(this, "domElement");
+    T(this, "levelStyles", {
       log: "color: black",
       highlight: "background-color: yellow; color: black",
       debug: "color: blue",
@@ -293,15 +305,15 @@ class oe extends I {
     this.domElement = s.domElement, s.levelStyles && (this.levelStyles = Object.freeze(s.levelStyles));
   }
   async write(s) {
-    return new Promise((u, m) => {
+    return new Promise((i, f) => {
       if (!this.domElement || this.domElement.innerHTML === void 0)
-        m("HtmlTransport: write: Invalid or undefined dom element");
+        f("HtmlTransport: write: Invalid or undefined dom element");
       else {
-        const { timestamp: g, level: f } = s, { dataAsString: p, hasData: D } = this.tryGetData(s), y = `<span>${g}</span>`;
-        let x = "";
-        f !== "log" ? x = `<span style="${this.levelStyles[f]}">${f}</span>` : x = `<span>${f}</span>`;
-        let S = `${y} ${x}`;
-        D ? S = `${S}: <span>${p}</span><br/>` : S = `${S}<br/>`, this.domElement.innerHTML += S, u(!0);
+        const { timestamp: g, level: d } = s, { dataAsString: p, hasData: M } = this.tryGetData(s), D = `<span>${g}</span>`;
+        let b = "";
+        d !== "log" ? b = `<span style="${this.levelStyles[d]}">${d}</span>` : b = `<span>${d}</span>`;
+        let y = `${D} ${b}`;
+        M ? y = `${y}: <span>${p}</span><br/>` : y = `${y}<br/>`, this.domElement.innerHTML += y, i(!0);
       }
     });
   }
@@ -309,9 +321,9 @@ class oe extends I {
 class le extends I {
   constructor(s) {
     super(s);
-    O(this, "prefix", Object.freeze("\x1B["));
-    O(this, "suffix", Object.freeze("\x1B[0;37m"));
-    O(this, "levelStyles", {
+    T(this, "prefix", Object.freeze("\x1B["));
+    T(this, "suffix", Object.freeze("\x1B[0;37m"));
+    T(this, "levelStyles", {
       log: "0;1;37m",
       highlight: "7;1;36m",
       debug: "0;1;34m",
@@ -323,20 +335,20 @@ class le extends I {
     s.levelStyles && (this.levelStyles = Object.freeze(s.levelStyles));
   }
   async write(s) {
-    return new Promise((u) => {
-      const { timestamp: m, level: g } = s, f = `${m} ${this.prefix}${this.levelStyles[g]}${g}${this.suffix}:`, p = s.args || [];
-      p.length > 0 ? console.log(`${f}:`, ...p) : console.log(f), u(!0);
+    return new Promise((i) => {
+      const { timestamp: f, level: g } = s, d = `${f} ${this.prefix}${this.levelStyles[g]}${g}${this.suffix}:`, p = s.args || [];
+      p.length > 0 ? console.log(`${d}:`, ...p) : console.log(d), i(!0);
     });
   }
 }
 class ae {
   constructor(r) {
-    O(this, "supportedLevels");
-    O(this, "transports");
-    O(this, "timestampService");
+    T(this, "supportedLevels");
+    T(this, "transports");
+    T(this, "timestampService");
     if (r) {
-      const { levels: s, transports: u, timestampService: m } = r;
-      this.initLevels(s), this.initTransports(u), this.initTimestampService(m);
+      const { levels: s, transports: i, timestampService: f } = r;
+      s ? this.initLevels(s) : this.initLevels(), i && i.length > 0 ? this.initTransports(i) : this.initTransports(), f ? this.initTimestampService(f) : this.initTimestampService();
     } else
       this.initLevels(), this.initTransports(), this.initTimestampService();
   }
@@ -360,61 +372,64 @@ class ae {
   }
   async canProceed(r) {
     return new Promise((s) => {
-      let u = !1;
-      const { transportLevel: m, transportLevelOnly: g, level: f } = r;
+      let i = !1;
+      const { transportLevel: f, transportLevelOnly: g, level: d } = r;
       if (g)
-        u = m === f;
-      else if (m === f || ["log", "highlight"].indexOf(f) > -1)
-        u = !0;
+        i = f === d;
+      else if (f === d || ["log", "highlight"].indexOf(d) > -1)
+        i = !0;
       else {
-        const p = this.supportedLevels, D = p.indexOf(m);
-        D > 1 && (u = p.slice(
+        const p = this.supportedLevels, M = p.indexOf(f);
+        M > 1 && (i = p.slice(
           0,
-          D
-        ).includes(f));
+          M
+        ).includes(d));
       }
-      s(u);
+      s(i);
     });
   }
   async transportsWrite(r) {
     return new Promise((s) => {
-      this.transports.forEach(async (u) => {
+      this.transports.forEach(async (i) => {
         if (await this.canProceed({
-          transportLevel: u.level,
-          transportLevelOnly: u.levelOnly,
+          transportLevel: i.level,
+          transportLevelOnly: i.levelOnly,
           level: r.level
         })) {
-          const g = await u.write(r);
+          const g = await i.write(r);
           s(g);
         }
       });
     });
   }
   log(...r) {
-    let s = "log", u = [];
-    (r || []).length > 0 && (s = r.shift(), r.length > 0 && (u = r));
-    const m = {
+    let s = "log", i = [];
+    if ((r || []).length > 0) {
+      const g = (r[0] || "").toString().trim().toLowerCase();
+      this.supportedLevels.indexOf(g) > -1 ? (s = g, r.shift(), r.length > 0 && (i = r)) : (s = "log", i = r);
+    }
+    const f = {
       timestamp: this.timestamp(),
       level: s,
-      args: u
+      args: i
     };
-    this.transportsWrite(m).then(() => {
+    this.transportsWrite(f).then(() => {
     });
   }
   highlight(...r) {
-    this.log(r);
+    this.log("highlight", ...r);
   }
   debug(...r) {
-    this.log(r);
+    this.log("debug", ...r);
   }
   info(...r) {
-    this.log(r);
+    this.log("info", ...r);
   }
   warn(...r) {
-    this.log(r);
+    this.log("warn", ...r);
   }
   error(...r) {
-    this.log(r);
+    this.log("error", ...r);
   }
 }
 export {
