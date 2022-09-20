@@ -31,13 +31,12 @@ export class HtmlTransport extends BaseTransport {
       if (!this.domElement || this.domElement.innerHTML === undefined) {
         reject('HtmlTransport: write: Invalid or undefined dom element')
       } else {
-        const { timestamp, level, message } = params
+        const { timestamp, level } = params
 
         // get data as string
         const { dataAsString, hasData } = this.tryGetData(params)
 
-        const formatTimstamp = `<span>${timestamp}</span>`
-        const formatMessage = `<span>${message}</span>`
+        const formatTimestamp = `<span>${timestamp}</span>`
         let formatLevel = ``
         if (level !== 'log') {
           formatLevel = `<span style="${this.levelStyles[level]}">${level}</span>`
@@ -45,9 +44,9 @@ export class HtmlTransport extends BaseTransport {
           formatLevel = `<span>${level}</span>`
         }
 
-        let outHtml = `${formatTimstamp} ${formatLevel}: ${formatMessage}`
+        let outHtml = `${formatTimestamp} ${formatLevel}`
         if (hasData) {
-          outHtml = `${outHtml}: ${dataAsString}<br/>`
+          outHtml = `${outHtml}: <span>${dataAsString}</span><br/>`
         } else {
           outHtml = `${outHtml}<br/>`
         }

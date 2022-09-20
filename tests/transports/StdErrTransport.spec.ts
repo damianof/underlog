@@ -19,7 +19,7 @@ describe('StdErrTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'log',
-        message: 'unit tests',
+        args: ['unit tests'],
       })
       expect(result).to.be.true
     })
@@ -30,7 +30,7 @@ describe('StdErrTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'info',
-        message: 'unit tests',
+        args: ['unit tests'],
       })
       expect(result).to.be.true
     })
@@ -39,7 +39,7 @@ describe('StdErrTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'warn',
-        message: 'unit tests',
+        args: ['unit tests'],
       })
       expect(result).to.be.true
     })
@@ -48,7 +48,7 @@ describe('StdErrTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'warn-high',
-        message: 'unit tests',
+        args: ['unit tests'],
       })
       expect(result).to.be.true
     })
@@ -57,7 +57,7 @@ describe('StdErrTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'error',
-        message: 'unit tests',
+        args: ['unit tests arg 1', 'unit tests arg 2', 'unit tests arg 3'],
       })
       expect(result).to.be.true
     })

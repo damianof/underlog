@@ -24,11 +24,16 @@ describe('Logger.log with transportLevelOnly false', () => {
     })
 
     it('level warn ', async () => {
-      logger.log('warn', 'unit tests')
+      logger.log('warn', 'unit tests arg1', 'unit test arg 2')
     })
 
     it('level error ', async () => {
-      logger.log('error', 'unit tests')
+      logger.log(
+        'error',
+        'unit tests arg 1',
+        'unit tests arg 2',
+        'unit tests arg 3'
+      )
     })
   })
 })

@@ -27,7 +27,7 @@ describe('ChromeTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'log',
-        message: 'unit tests',
+        args: ['unit tests'],
       })
       expect(result).to.be.true
     })
@@ -38,7 +38,18 @@ describe('ChromeTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'info',
-        message: 'unit tests',
+        args: ['unit tests'],
+      })
+      expect(result).to.be.true
+    })
+  })
+
+  describe('write: error', () => {
+    it('should return true when level is error ', async () => {
+      const result = await transport.write({
+        timestamp: timestamp,
+        level: 'error',
+        args: ['unit tests arg 1', 'unit tests arg 2', 'unit tests arg 3'],
       })
       expect(result).to.be.true
     })

@@ -1,6 +1,6 @@
 import { ITimestampService } from './ITimestampService'
 import { ILogTransport, ILogTransportWriteParams } from './ILogTransport'
-import { MomentTimestampService } from './timeservices'
+import { DayJsTimestampService } from './timeservices'
 import { DefaultTransport } from './transports'
 
 export interface ILogger {
@@ -12,7 +12,7 @@ export interface ILogger {
 
   transportsWrite(params: ILogTransportWriteParams): Promise<boolean>
 
-  log(level: string, message: string, data?: any): void
+  log(...args: any): void
   highlight(message: string, data?: any): void
   debug(message: string, data?: any): void
 }
@@ -66,16 +66,16 @@ export class Logger implements ILogger {
         new DefaultTransport({
           level: 'error',
           levelOnly: false,
-        }),
+        })
       ]
     }
   }
 
   private initTimestampService(timestampService?: ITimestampService) {
-    if (timestampService && timestampService.getTimestamp) {
+    if (timestampService) {
       this.timestampService = timestampService
     } else {
-      this.timestampService = new MomentTimestampService()
+      this.timestampService = new DayJsTimestampService()
     }
   }
 
@@ -103,9 +103,8 @@ export class Logger implements ILogger {
           // if level is not 'log', 'highlight', or 'error', we can proceed
           // as long as level is one of the previous levels before transportLevel value
           const supportedLevels = this.supportedLevels
-          const currentTransportLevelIndex = supportedLevels.indexOf(
-            transportLevel
-          )
+          const currentTransportLevelIndex =
+            supportedLevels.indexOf(transportLevel)
           if (currentTransportLevelIndex > 1) {
             const previousLevels = supportedLevels.slice(
               0,
@@ -136,15 +135,21 @@ export class Logger implements ILogger {
     })
   }
 
-  log(level: string, message: string, data?: any): void {
-    const writeParams: any = {
-      timestamp: this.timestamp(),
-      level: level,
-      message: message,
+  log(...args: any[]) {
+    let level = 'log'
+    let restOfArgs: any[] = []
+    if ((args || []).length > 0) {
+      // level is always the first parameter
+      level = args.shift() // extract first parameter and remove it from args
+      if (args.length > 0) {
+        restOfArgs = args
+      }
     }
 
-    if (arguments.length > 2) {
-      writeParams.data = data
+    const writeParams: ILogTransportWriteParams = {
+      timestamp: this.timestamp(),
+      level: level,
+      args: restOfArgs,
     }
 
     this.transportsWrite(writeParams).then(() => {

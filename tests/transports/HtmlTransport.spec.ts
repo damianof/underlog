@@ -23,9 +23,9 @@ describe('HtmlTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'log',
-        message: 'unit tests',
+        args: ['unit tests'],
       })
-      console.log('domElement', domElement.innerHTML)
+      console.log('tests: domElement', domElement.innerHTML)
       expect(result).to.be.true
     })
   })
@@ -45,9 +45,9 @@ describe('HtmlTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'info',
-        message: 'unit tests',
+        args: ['unit tests'],
       })
-      console.log('domElement', domElement.innerHTML)
+      console.log('tests: domElement', domElement.innerHTML)
       expect(result).to.be.true
     })
   })
@@ -67,9 +67,9 @@ describe('HtmlTransport.write', () => {
       const result = await transport.write({
         timestamp: timestamp,
         level: 'warn',
-        message: 'unit tests',
+        args: ['unit tests arg 1', 'unit tests arg 2', 'unit tests arg 3'],
       })
-      console.log('domElement', domElement.innerHTML)
+      console.log('tests: domElement', domElement.innerHTML)
       expect(result).to.be.true
     })
   })

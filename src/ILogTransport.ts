@@ -1,8 +1,7 @@
 export interface ILogTransportWriteParams {
   timestamp: string
   level: string
-  message: string
-  data?: any
+  args?: any
 }
 
 export interface ILogTransport {

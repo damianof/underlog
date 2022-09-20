@@ -8,14 +8,11 @@ export class DefaultTransport extends BaseTransport {
 
   async write(params: ILogTransportWriteParams): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
-      const { timestamp, level, message } = params
+      const { timestamp, level, args } = params
+      const outMessage = `${timestamp} ${level}`
 
-      // get data as string
-      const { dataAsString, hasData } = this.tryGetData(params)
-
-      const outMessage = `${timestamp} ${level}: ${message}`
-      if (hasData) {
-        console.log(outMessage, dataAsString)
+      if (args) {
+        console.log(`${outMessage}:`, ...args)
       } else {
         console.log(outMessage)
       }

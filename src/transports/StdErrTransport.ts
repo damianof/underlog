@@ -27,18 +27,14 @@ export class StdErrTransport extends BaseTransport {
 
   async write(params: ILogTransportWriteParams): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
-      const { timestamp, level, message } = params
-
-      // get data as string
-      const { dataAsString, hasData } = this.tryGetData(params)
-
-      const outMessage = `${timestamp} ${this.prefix}${this.levelStyles[level]}${level}${this.suffix}: ${message}`
-      if (hasData) {
-        console.log(outMessage, dataAsString)
+      const { timestamp, level } = params
+      const outMessage = `${timestamp} ${this.prefix}${this.levelStyles[level]}${level}${this.suffix}:`
+      const args = params.args || []
+      if (args.length > 0) {
+        console.log(`${outMessage}:`, ...args)
       } else {
         console.log(outMessage)
       }
-
       resolve(true)
     })
   }

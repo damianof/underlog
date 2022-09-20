@@ -23,42 +23,36 @@ export abstract class BaseTransport implements ILogTransport {
    * If it was passed, we still ahve to log it as 'undefined',
    * unless it was not passed at all in which case we do not want to log it.
    */
-  tryGetData(
-    params: ILogTransportWriteParams
-  ): {
+  tryGetData(params: ILogTransportWriteParams): {
     dataAsString: string
+    dataRaw: any[]
     hasData: boolean
   } {
     let result = {
       dataAsString: '',
+      dataRaw: [],
       hasData: false,
     }
 
-    result.hasData = Object.keys(params).length === 4
+    const args = params.args || []
+    result.hasData = args.length > 0
 
-    // try to stringify data if is JSON
-    if (!result.hasData) {
-      return result
-    } else {
-      result.hasData = true
-
-      if (typeof params.data === 'undefined') {
-        result.dataAsString = 'undefined'
-        return result
-      }
-
-      if (typeof params.data === 'string') {
-        result.dataAsString = params.data
-        return result
-      }
+    if (args.length > 0) {
+      result.dataRaw = args
 
       try {
-        result.dataAsString = JSON.stringify(params.data)
+        if (Array.isArray(args)) {
+          result.dataAsString = args.join(', ')
+        } else {
+          result.dataAsString = JSON.stringify(args)
+        }
         return result
       } catch {
-        result.dataAsString = params.data.toString()
+        result.dataAsString = args.join(', ')
         return result
       }
     }
+
+    return result
   }
 }
