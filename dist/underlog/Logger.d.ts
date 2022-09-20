@@ -31,6 +31,8 @@ export declare class Logger implements ILogger {
         level: string;
     }): Promise<boolean>;
     transportsWrite(params: ILogTransportWriteParams): Promise<boolean>;
+    getDefaultLevels(): readonly string[];
+    getSupportedLevels(): readonly string[];
     log(...args: any[]): void;
     highlight(...args: any): void;
     debug(...args: any[]): void;

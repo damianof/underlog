@@ -2,7 +2,7 @@ import { Logger } from '../../src/main'
 
 describe('Logger.log with transportLevelOnly false', () => {
   const logger = new Logger({
-    levels: ['info', 'warn', 'warn-high', 'error'],
+    levels: ['info', 'warn', 'warnhigh', 'error'],
   })
 
   describe('with undefined data parameter', () => {

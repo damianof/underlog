@@ -8,7 +8,7 @@ const stdErrTransport = new StdErrTransport({
 
 // setup Logger
 const logger = new Logger({
-  //levels: ['info', 'warn', 'warn-high', 'error'],
+  // levels: ['log', 'highlight', 'debug', 'info', 'warn', 'warnhigh', 'error'],
   transports: [stdErrTransport],
 })
 

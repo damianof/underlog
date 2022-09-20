@@ -9,7 +9,7 @@ export class HtmlTransport extends BaseTransport {
     debug: 'color: blue',
     info: 'color: green',
     warn: 'color: orange',
-    ['warn-high']: 'font-size: 20px; background: orange; color: white',
+    warnhigh: 'font-size: 20px; background: orange; color: white',
     error: 'color: red',
   }
 

@@ -2,7 +2,7 @@ import { Logger } from '../../src/main'
 
 describe('Logger.canProceed with transportLevelOnly true', () => {
   const logger = new Logger({
-    levels: ['info', 'warn', 'warn-high', 'error'],
+    levels: ['info', 'warn', 'warnhigh', 'error'],
     transports: [],
   })
   const transportLevelOnly = true
@@ -42,7 +42,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false',
+        level: 'info',
       })
 
       expect(result).toEqual(false)
@@ -52,17 +52,17 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false',
+        level: 'warn',
       })
 
       expect(result).toEqual(false)
     })
 
-    it('should return false when level is warn-high ', async () => {
+    it('should return false when level is warnhigh ', async () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high',
+        level: 'warnhigh',
       })
 
       expect(result).toEqual(false)
@@ -114,7 +114,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false',
+        level: 'info',
       })
 
       expect(result).toEqual(false)
@@ -124,17 +124,17 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false',
+        level: 'warn',
       })
 
       expect(result).toEqual(false)
     })
 
-    it('should return false when level is warn-high ', async () => {
+    it('should return false when level is warnhigh ', async () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high',
+        level: 'warnhigh',
       })
 
       expect(result).toEqual(false)
@@ -186,7 +186,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false',
+        level: 'info',
       })
 
       expect(result).toEqual(false)
@@ -196,17 +196,17 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'false',
+        level: 'warn',
       })
 
       expect(result).toEqual(false)
     })
 
-    it('should return false when level is warn-high ', async () => {
+    it('should return false when level is warnhigh ', async () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high',
+        level: 'warnhigh',
       })
 
       expect(result).toEqual(false)
@@ -276,11 +276,11 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       expect(result).toEqual(false)
     })
 
-    it('should return false when level is warn-high', async () => {
+    it('should return false when level is warnhigh', async () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high',
+        level: 'warnhigh',
       })
 
       expect(result).toEqual(false)
@@ -350,11 +350,11 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       expect(result).toEqual(true)
     })
 
-    it('should return false when level is warn-high ', async () => {
+    it('should return false when level is warnhigh ', async () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high',
+        level: 'warnhigh',
       })
 
       expect(result).toEqual(false)
@@ -371,8 +371,8 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
     })
   })
 
-  describe('transportLevel: warn-high', () => {
-    const transportLevel = 'warn-high'
+  describe('transportLevel: warnhigh', () => {
+    const transportLevel = 'warnhigh'
 
     it('should return false when level is log ', async () => {
       const result = await logger.canProceed({
@@ -424,11 +424,11 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       expect(result).toEqual(false)
     })
 
-    it('should return true when level is warn-high ', async () => {
+    it('should return true when level is warnhigh ', async () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high',
+        level: 'warnhigh',
       })
 
       expect(result).toEqual(true)
@@ -498,11 +498,11 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
       expect(result).toEqual(false)
     })
 
-    it('should return false when level is warn-high ', async () => {
+    it('should return false when level is warnhigh ', async () => {
       const result = await logger.canProceed({
         transportLevel: transportLevel,
         transportLevelOnly: transportLevelOnly,
-        level: 'warn-high',
+        level: 'warnhigh',
       })
 
       expect(result).toEqual(false)

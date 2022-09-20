@@ -6,11 +6,11 @@ export class StdErrTransport extends BaseTransport {
   private readonly suffix: string = Object.freeze('\x1b[0;37m')
   private readonly levelStyles: { [key: string]: string } = {
     log: '0;1;37m', // white, bold
-    highlight: '7;1;36m', // cyan background, bold
+    highlight: '7;1;38m', // white background, bold
     debug: '0;1;34m', // blue, bold
     info: '0;1;32m', // green, bold
     warn: '0;1;33m', // yellow, bold
-    ['warn-high']: '0;1;35m', // purple, bold
+    warnhigh: '0;1;35m', // purple, bold
     error: '0;1;31m', // red, bold
   }
 

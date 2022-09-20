@@ -39,10 +39,10 @@ describe('StdErrTransport.write', () => {
       expect(result).toEqual(true)
     })
 
-    it('should return true when level is warn-high ', async () => {
+    it('should return true when level is warnhigh ', async () => {
       const result = await transport.write({
         timestamp: timestamp,
-        level: 'warn-high',
+        level: 'warnhigh',
         args: ['unit tests'],
       })
       expect(result).toEqual(true)

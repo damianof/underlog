@@ -23,8 +23,12 @@ export interface ILoggerOptions {
   timestampService?: ITimestampService
 }
 
+const defaultLevels = Object.freeze([
+  'log', 'highlight', 'debug', 'info', 'warn', 'error'
+])
+
 export class Logger implements ILogger {
-  private supportedLevels!: string[]
+  private supportedLevels!: Readonly<string[]>
   private transports!: ILogTransport[]
   private timestampService!: ITimestampService
 
@@ -38,7 +42,7 @@ export class Logger implements ILogger {
   constructor(options?: ILoggerOptions) {
     if (options) {
       const { levels, transports, timestampService } = options
-      if (levels) {
+      if (levels && levels.length > 0) {
         this.initLevels(levels)
       } else {
         this.initLevels()
@@ -61,11 +65,11 @@ export class Logger implements ILogger {
   }
 
   private initLevels(levels?: string[]) {
-    const defaultLevels = ['highlight', 'debug']
-    if ((levels || []).length > 0) {
-      this.supportedLevels = [...defaultLevels, ...(<string[]>levels)]
+    const customLevels = (levels || []) as string[]
+    if (customLevels.length > 0) {
+      this.supportedLevels = Object.freeze([...customLevels])
     } else {
-      this.supportedLevels = defaultLevels
+      this.supportedLevels = Object.freeze([...defaultLevels])
     }
   }
 
@@ -97,7 +101,8 @@ export class Logger implements ILogger {
   }): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       let result = false
-      const { transportLevel, transportLevelOnly, level } = params
+      const { transportLevel, transportLevelOnly } = params
+      const level = (params.level || '').toString().trim().toLowerCase()
 
       if (transportLevelOnly) {
         // log only the level specified in transportLevel
@@ -147,6 +152,14 @@ export class Logger implements ILogger {
     })
   }
 
+  getDefaultLevels() {
+    return defaultLevels
+  }
+
+  getSupportedLevels() {
+    return this.supportedLevels
+  }
+
   log(...args: any[]) {
     let level = 'log'
     let restOfArgs: any[] = []
@@ -167,7 +180,7 @@ export class Logger implements ILogger {
 
     const writeParams: ILogTransportWriteParams = {
       timestamp: this.timestamp(),
-      level: level,
+      level,
       args: restOfArgs,
     }
 

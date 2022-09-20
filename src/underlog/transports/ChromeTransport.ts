@@ -5,11 +5,11 @@ export class ChromeTransport extends BaseTransport {
   private readonly prefix: string = Object.freeze('%c ')
   private readonly levelStyles: { [key: string]: string } = {
     log: 'background: blue; color: white',
-    highlight: 'background: yellow;',
+    highlight: 'background: lightyellow;',
     debug: 'background: blue; color: white',
     info: 'background: green; color: white',
     warn: 'background: orange; color: white',
-    ['warn-high']: 'font-size: 20px; background: orange; color: white',
+    warnhigh: 'font-size: 20px; background: orange; color: white',
     error: 'background: red; color: white',
   }
 
