@@ -1,10 +1,6 @@
-import { expect } from 'chai'
-import {
-  ILogTransport,
-  ILogTransportWriteParams,
-} from '../../src/ILogTransport'
-import { ChromeTransport } from '../../src/transports/ChromeTransport'
+import { ChromeTransport } from '../../src/underlog'
 import { JSDOM } from 'jsdom'
+import { beforeEach } from 'vitest'
 
 describe('ChromeTransport.write', () => {
   const timestamp = new Date().toString()
@@ -15,7 +11,7 @@ describe('ChromeTransport.write', () => {
     levelStyles: undefined,
   })
 
-  before(() => {
+  beforeEach(() => {
     global.window = new JSDOM('') as any
     global.navigator = {
       userAgent: 'chrome',
@@ -29,7 +25,7 @@ describe('ChromeTransport.write', () => {
         level: 'log',
         args: ['unit tests'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 
@@ -40,7 +36,7 @@ describe('ChromeTransport.write', () => {
         level: 'info',
         args: ['unit tests'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 
@@ -51,7 +47,7 @@ describe('ChromeTransport.write', () => {
         level: 'error',
         args: ['unit tests arg 1', 'unit tests arg 2', 'unit tests arg 3'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 })

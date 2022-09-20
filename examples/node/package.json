@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "underlog example: consuming from nodejs",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damiano Fusco",
   "license": "MIT",
   "dependencies": {
-    "underlog": "file:../.."
+    "tslib": "^2.4.0"
   }
 }

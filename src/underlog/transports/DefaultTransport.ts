@@ -1,4 +1,4 @@
-import { ILogTransport, ILogTransportWriteParams } from '../ILogTransport'
+import { ILogTransportWriteParams } from '../ILogTransport'
 import { BaseTransport } from './BaseTransport'
 
 export class DefaultTransport extends BaseTransport {

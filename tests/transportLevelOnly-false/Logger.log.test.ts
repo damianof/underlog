@@ -1,11 +1,9 @@
-import { expect } from 'chai'
-import { Logger } from '../../src/Logger'
+import { Logger } from '../../src/main'
 
 describe('Logger.log with transportLevelOnly false', () => {
   const logger = new Logger({
     levels: ['info', 'warn', 'warn-high', 'error'],
   })
-  const transportLevelOnly = false
 
   describe('with undefined data parameter', () => {
     const data: any = undefined

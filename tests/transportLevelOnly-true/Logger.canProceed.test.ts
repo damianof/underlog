@@ -1,5 +1,4 @@
-import { expect } from 'chai'
-import { Logger } from '../../src/Logger'
+import { Logger } from '../../src/main'
 
 describe('Logger.canProceed with transportLevelOnly true', () => {
   const logger = new Logger({
@@ -17,7 +16,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         transportLevelOnly: transportLevelOnly,
         level: 'log',
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return false when level is highlight', async () => {
@@ -26,7 +25,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         transportLevelOnly: transportLevelOnly,
         level: 'highlight',
       })
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is debug ', async () => {
@@ -36,7 +35,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'debug',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is info ', async () => {
@@ -46,7 +45,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'false',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn ', async () => {
@@ -56,7 +55,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'false',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn-high ', async () => {
@@ -66,7 +65,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn-high',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is error ', async () => {
@@ -76,7 +75,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'error',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
   })
 
@@ -89,7 +88,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         transportLevelOnly: transportLevelOnly,
         level: 'log',
       })
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return true when level is highlight ', async () => {
@@ -98,7 +97,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         transportLevelOnly: transportLevelOnly,
         level: 'highlight',
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return false when level is debug ', async () => {
@@ -108,7 +107,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'debug',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is info ', async () => {
@@ -118,7 +117,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'false',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn ', async () => {
@@ -128,7 +127,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'false',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn-high ', async () => {
@@ -138,7 +137,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn-high',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is error ', async () => {
@@ -148,7 +147,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'error',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
   })
 
@@ -161,7 +160,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         transportLevelOnly: transportLevelOnly,
         level: 'log',
       })
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is highlight ', async () => {
@@ -170,7 +169,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         transportLevelOnly: transportLevelOnly,
         level: 'highlight',
       })
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return true when level is debug ', async () => {
@@ -180,7 +179,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'debug',
       })
 
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return false when level is info ', async () => {
@@ -190,7 +189,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'false',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn ', async () => {
@@ -200,7 +199,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'false',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn-high ', async () => {
@@ -210,7 +209,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn-high',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is error ', async () => {
@@ -220,7 +219,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'error',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
   })
 
@@ -234,7 +233,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'log',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is highlight ', async () => {
@@ -244,7 +243,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'highlight',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is debug ', async () => {
@@ -254,7 +253,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'debug',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return true when level is info ', async () => {
@@ -264,7 +263,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'info',
       })
 
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return false when level is warn', async () => {
@@ -274,7 +273,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn-high', async () => {
@@ -284,7 +283,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn-high',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is error ', async () => {
@@ -294,7 +293,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'error',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
   })
 
@@ -308,7 +307,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'log',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is highlight ', async () => {
@@ -318,7 +317,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'highlight',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is debug ', async () => {
@@ -328,7 +327,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'debug',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is info ', async () => {
@@ -338,7 +337,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'info',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return true when level is warn ', async () => {
@@ -348,7 +347,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn',
       })
 
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return false when level is warn-high ', async () => {
@@ -358,7 +357,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn-high',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is error ', async () => {
@@ -368,7 +367,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'error',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
   })
 
@@ -382,7 +381,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'log',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is highlight ', async () => {
@@ -392,7 +391,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'highlight',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is debug ', async () => {
@@ -402,7 +401,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'debug',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is info ', async () => {
@@ -412,7 +411,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'info',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn ', async () => {
@@ -422,7 +421,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return true when level is warn-high ', async () => {
@@ -432,7 +431,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn-high',
       })
 
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return false when level is error ', async () => {
@@ -442,7 +441,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'error',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
   })
 
@@ -456,7 +455,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'log',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is highlight ', async () => {
@@ -466,7 +465,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'highlight',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is debug ', async () => {
@@ -476,7 +475,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'debug',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is info ', async () => {
@@ -486,7 +485,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'info',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn ', async () => {
@@ -496,7 +495,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return false when level is warn-high ', async () => {
@@ -506,7 +505,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'warn-high',
       })
 
-      expect(result).to.be.false
+      expect(result).toEqual(false)
     })
 
     it('should return true when level is error ', async () => {
@@ -516,7 +515,7 @@ describe('Logger.canProceed with transportLevelOnly true', () => {
         level: 'error',
       })
 
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 })

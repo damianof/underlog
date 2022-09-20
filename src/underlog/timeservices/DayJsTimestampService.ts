@@ -1,5 +1,4 @@
-import { ITimestampService } from '../ITimestampService'
-import dayjs from 'dayjs'
+const dayjs = require('dayjs')
 
 export class DayJsTimestampService {
   getTimestamp(): string {

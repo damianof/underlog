@@ -13,8 +13,8 @@ export interface ILogger {
   transportsWrite(params: ILogTransportWriteParams): Promise<boolean>
 
   log(...args: any): void
-  highlight(message: string, data?: any): void
-  debug(message: string, data?: any): void
+  highlight(...args: any): void
+  debug(...args: any): void
 }
 
 export interface ILoggerOptions {
@@ -66,7 +66,7 @@ export class Logger implements ILogger {
         new DefaultTransport({
           level: 'error',
           levelOnly: false,
-        })
+        }),
       ]
     }
   }
@@ -157,31 +157,23 @@ export class Logger implements ILogger {
     })
   }
 
-  private logByCheckingData(args: any) {
-    if (args.length > 2) {
-      this.log(args[0], args[1], args[2])
-    } else {
-      this.log(args[0], args[1])
-    }
+  highlight(...args: any) {
+    this.log(args)
   }
 
-  highlight(message: string, data?: any) {
-    this.logByCheckingData(['highlight', ...arguments])
+  debug(...args: any[]) {
+    this.log(args)
   }
 
-  debug(message: string, data?: any) {
-    this.logByCheckingData(['debug', ...arguments])
+  info(...args: any[]) {
+    this.log(args)
   }
 
-  info(message: string, data?: any): void {
-    this.logByCheckingData(['info', ...arguments])
+  warn(...args: any[]) {
+    this.log(args)
   }
 
-  warn(message: string, data?: any): void {
-    this.logByCheckingData(['warn', ...arguments])
-  }
-
-  error(message: string, data?: any): void {
-    this.logByCheckingData(['error', ...arguments])
+  error(...args: any[]) {
+    this.log(args)
   }
 }

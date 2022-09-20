@@ -1,9 +1,4 @@
-import { expect } from 'chai'
-import {
-  ILogTransport,
-  ILogTransportWriteParams,
-} from '../../src/ILogTransport'
-import { HtmlTransport } from '../../src/transports/HtmlTransport'
+import { HtmlTransport } from '../../src/underlog'
 
 describe('HtmlTransport.write', () => {
   const timestamp = new Date().toString()
@@ -26,7 +21,7 @@ describe('HtmlTransport.write', () => {
         args: ['unit tests'],
       })
       console.log('tests: domElement', domElement.innerHTML)
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 
@@ -48,7 +43,7 @@ describe('HtmlTransport.write', () => {
         args: ['unit tests'],
       })
       console.log('tests: domElement', domElement.innerHTML)
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 
@@ -70,7 +65,7 @@ describe('HtmlTransport.write', () => {
         args: ['unit tests arg 1', 'unit tests arg 2', 'unit tests arg 3'],
       })
       console.log('tests: domElement', domElement.innerHTML)
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 })

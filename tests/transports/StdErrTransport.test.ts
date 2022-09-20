@@ -1,9 +1,4 @@
-import { expect } from 'chai'
-import {
-  ILogTransport,
-  ILogTransportWriteParams,
-} from '../../src/ILogTransport'
-import { StdErrTransport } from '../../src/transports/StdErrTransport'
+import { StdErrTransport } from '../../src/underlog'
 
 describe('StdErrTransport.write', () => {
   const timestamp = new Date().toString()
@@ -21,7 +16,7 @@ describe('StdErrTransport.write', () => {
         level: 'log',
         args: ['unit tests'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 
@@ -32,7 +27,7 @@ describe('StdErrTransport.write', () => {
         level: 'info',
         args: ['unit tests'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return true when level is warn ', async () => {
@@ -41,7 +36,7 @@ describe('StdErrTransport.write', () => {
         level: 'warn',
         args: ['unit tests'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return true when level is warn-high ', async () => {
@@ -50,7 +45,7 @@ describe('StdErrTransport.write', () => {
         level: 'warn-high',
         args: ['unit tests'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
 
     it('should return true when level is error ', async () => {
@@ -59,7 +54,7 @@ describe('StdErrTransport.write', () => {
         level: 'error',
         args: ['unit tests arg 1', 'unit tests arg 2', 'unit tests arg 3'],
       })
-      expect(result).to.be.true
+      expect(result).toEqual(true)
     })
   })
 })
