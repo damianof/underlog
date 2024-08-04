@@ -10,7 +10,6 @@
   "author": "Damiano Fusco",
   "license": "MIT",
   "dependencies": {
-    "tslib": "^2.4.0",
     "underlog": "file:../../"
   }
 }
