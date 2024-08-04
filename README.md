@@ -1,6 +1,6 @@
 # underlog
 
-[![npm version](https://badge.fury.io/js/underlog.svg?1.1.5)](https://badge.fury.io/js/underlog)
+[![npm version](https://badge.fury.io/js/underlog.svg)](https://badge.fury.io/js/underlog)
 
 Logger that can support different clients (Browser, Node, custom, etc)
 
@@ -10,9 +10,7 @@ Logger that can support different clients (Browser, Node, custom, etc)
 # Server Side example with StdErrTransport (screenshot)
 ![stderrtransport-node](screenshots/stderrtransport-node.png) 
 
-
 ### StdErrTransport Default color styles
-
 {
   log: '0;1;37m', // white, bold
   highlight: '7;1;36m', // cyan background, bold
