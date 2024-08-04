@@ -1,267 +1,350 @@
-var X = Object.defineProperty;
-var ee = (w, r, s) => r in w ? X(w, r, { enumerable: !0, configurable: !0, writable: !0, value: s }) : w[r] = s;
-var L = (w, r, s) => (ee(w, typeof r != "symbol" ? r + "" : r, s), s);
-var te = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, R = { exports: {} };
-(function(w, r) {
-  (function(s, i) {
-    w.exports = i();
-  })(te, function() {
-    var s = 1e3, i = 6e4, f = 36e5, g = "millisecond", d = "second", p = "minute", M = "hour", b = "day", D = "week", y = "month", B = "quarter", x = "year", A = "date", F = "Invalid Date", V = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, q = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, Q = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, J = function(u, n, e) {
-      var o = String(u);
-      return !o || o.length >= n ? u : "" + Array(n + 1 - o.length).join(e) + u;
-    }, K = { s: J, z: function(u) {
-      var n = -u.utcOffset(), e = Math.abs(n), o = Math.floor(e / 60), t = e % 60;
-      return (n <= 0 ? "+" : "-") + J(o, 2, "0") + ":" + J(t, 2, "0");
-    }, m: function u(n, e) {
-      if (n.date() < e.date())
-        return -u(e, n);
-      var o = 12 * (e.year() - n.year()) + (e.month() - n.month()), t = n.clone().add(o, y), a = e - t < 0, l = n.clone().add(o + (a ? -1 : 1), y);
-      return +(-(o + (e - t) / (a ? t - l : l - t)) || 0);
-    }, a: function(u) {
-      return u < 0 ? Math.ceil(u) || 0 : Math.floor(u);
-    }, p: function(u) {
-      return { M: y, y: x, w: D, d: b, D: A, h: M, m: p, s: d, ms: g, Q: B }[u] || String(u || "").toLowerCase().replace(/s$/, "");
-    }, u: function(u) {
-      return u === void 0;
-    } }, z = "en", k = {};
-    k[z] = Q;
-    var N = function(u) {
-      return u instanceof W;
-    }, P = function u(n, e, o) {
+var ee = Object.defineProperty;
+var te = (v, s, n) => s in v ? ee(v, s, { enumerable: !0, configurable: !0, writable: !0, value: n }) : v[s] = n;
+var L = (v, s, n) => te(v, typeof s != "symbol" ? s + "" : s, n);
+var re = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function ne(v) {
+  return v && v.__esModule && Object.prototype.hasOwnProperty.call(v, "default") ? v.default : v;
+}
+var V = { exports: {} };
+(function(v, s) {
+  (function(n, a) {
+    v.exports = a();
+  })(re, function() {
+    var n = 1e3, a = 6e4, h = 36e5, g = "millisecond", d = "second", y = "minute", b = "hour", M = "day", D = "week", w = "month", U = "quarter", x = "year", H = "date", B = "Invalid Date", q = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, Q = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, K = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(o) {
+      var r = ["th", "st", "nd", "rd"], e = o % 100;
+      return "[" + o + (r[(e - 20) % 10] || r[e] || r[0]) + "]";
+    } }, N = function(o, r, e) {
+      var i = String(o);
+      return !i || i.length >= r ? o : "" + Array(r + 1 - i.length).join(e) + o;
+    }, X = { s: N, z: function(o) {
+      var r = -o.utcOffset(), e = Math.abs(r), i = Math.floor(e / 60), t = e % 60;
+      return (r <= 0 ? "+" : "-") + N(i, 2, "0") + ":" + N(t, 2, "0");
+    }, m: function o(r, e) {
+      if (r.date() < e.date()) return -o(e, r);
+      var i = 12 * (e.year() - r.year()) + (e.month() - r.month()), t = r.clone().add(i, w), l = e - t < 0, u = r.clone().add(i + (l ? -1 : 1), w);
+      return +(-(i + (e - t) / (l ? t - u : u - t)) || 0);
+    }, a: function(o) {
+      return o < 0 ? Math.ceil(o) || 0 : Math.floor(o);
+    }, p: function(o) {
+      return { M: w, y: x, w: D, d: M, D: H, h: b, m: y, s: d, ms: g, Q: U }[o] || String(o || "").toLowerCase().replace(/s$/, "");
+    }, u: function(o) {
+      return o === void 0;
+    } }, C = "en", j = {};
+    j[C] = K;
+    var G = "$isDayjsObject", F = function(o) {
+      return o instanceof W || !(!o || !o[G]);
+    }, E = function o(r, e, i) {
       var t;
-      if (!n)
-        return z;
-      if (typeof n == "string") {
-        var a = n.toLowerCase();
-        k[a] && (t = a), e && (k[a] = e, t = a);
-        var l = n.split("-");
-        if (!t && l.length > 1)
-          return u(l[0]);
+      if (!r) return C;
+      if (typeof r == "string") {
+        var l = r.toLowerCase();
+        j[l] && (t = l), e && (j[l] = e, t = l);
+        var u = r.split("-");
+        if (!t && u.length > 1) return o(u[0]);
       } else {
-        var c = n.name;
-        k[c] = n, t = c;
+        var f = r.name;
+        j[f] = r, t = f;
       }
-      return !o && t && (z = t), t || !o && z;
-    }, $ = function(u, n) {
-      if (N(u))
-        return u.clone();
-      var e = typeof n == "object" ? n : {};
-      return e.date = u, e.args = arguments, new W(e);
-    }, h = K;
-    h.l = P, h.i = N, h.w = function(u, n) {
-      return $(u, { locale: n.$L, utc: n.$u, x: n.$x, $offset: n.$offset });
+      return !i && t && (C = t), t || !i && C;
+    }, $ = function(o, r) {
+      if (F(o)) return o.clone();
+      var e = typeof r == "object" ? r : {};
+      return e.date = o, e.args = arguments, new W(e);
+    }, c = X;
+    c.l = E, c.i = F, c.w = function(o, r) {
+      return $(o, { locale: r.$L, utc: r.$u, x: r.$x, $offset: r.$offset });
     };
     var W = function() {
-      function u(e) {
-        this.$L = P(e.locale, null, !0), this.parse(e);
+      function o(e) {
+        this.$L = E(e.locale, null, !0), this.parse(e), this.$x = this.$x || e.x || {}, this[G] = !0;
       }
-      var n = u.prototype;
-      return n.parse = function(e) {
-        this.$d = function(o) {
-          var t = o.date, a = o.utc;
-          if (t === null)
-            return new Date(NaN);
-          if (h.u(t))
-            return new Date();
-          if (t instanceof Date)
-            return new Date(t);
+      var r = o.prototype;
+      return r.parse = function(e) {
+        this.$d = function(i) {
+          var t = i.date, l = i.utc;
+          if (t === null) return /* @__PURE__ */ new Date(NaN);
+          if (c.u(t)) return /* @__PURE__ */ new Date();
+          if (t instanceof Date) return new Date(t);
           if (typeof t == "string" && !/Z$/i.test(t)) {
-            var l = t.match(V);
-            if (l) {
-              var c = l[2] - 1 || 0, v = (l[7] || "0").substring(0, 3);
-              return a ? new Date(Date.UTC(l[1], c, l[3] || 1, l[4] || 0, l[5] || 0, l[6] || 0, v)) : new Date(l[1], c, l[3] || 1, l[4] || 0, l[5] || 0, l[6] || 0, v);
+            var u = t.match(q);
+            if (u) {
+              var f = u[2] - 1 || 0, m = (u[7] || "0").substring(0, 3);
+              return l ? new Date(Date.UTC(u[1], f, u[3] || 1, u[4] || 0, u[5] || 0, u[6] || 0, m)) : new Date(u[1], f, u[3] || 1, u[4] || 0, u[5] || 0, u[6] || 0, m);
             }
           }
           return new Date(t);
-        }(e), this.$x = e.x || {}, this.init();
-      }, n.init = function() {
+        }(e), this.init();
+      }, r.init = function() {
         var e = this.$d;
         this.$y = e.getFullYear(), this.$M = e.getMonth(), this.$D = e.getDate(), this.$W = e.getDay(), this.$H = e.getHours(), this.$m = e.getMinutes(), this.$s = e.getSeconds(), this.$ms = e.getMilliseconds();
-      }, n.$utils = function() {
-        return h;
-      }, n.isValid = function() {
-        return this.$d.toString() !== F;
-      }, n.isSame = function(e, o) {
+      }, r.$utils = function() {
+        return c;
+      }, r.isValid = function() {
+        return this.$d.toString() !== B;
+      }, r.isSame = function(e, i) {
         var t = $(e);
-        return this.startOf(o) <= t && t <= this.endOf(o);
-      }, n.isAfter = function(e, o) {
-        return $(e) < this.startOf(o);
-      }, n.isBefore = function(e, o) {
-        return this.endOf(o) < $(e);
-      }, n.$g = function(e, o, t) {
-        return h.u(e) ? this[o] : this.set(t, e);
-      }, n.unix = function() {
+        return this.startOf(i) <= t && t <= this.endOf(i);
+      }, r.isAfter = function(e, i) {
+        return $(e) < this.startOf(i);
+      }, r.isBefore = function(e, i) {
+        return this.endOf(i) < $(e);
+      }, r.$g = function(e, i, t) {
+        return c.u(e) ? this[i] : this.set(t, e);
+      }, r.unix = function() {
         return Math.floor(this.valueOf() / 1e3);
-      }, n.valueOf = function() {
+      }, r.valueOf = function() {
         return this.$d.getTime();
-      }, n.startOf = function(e, o) {
-        var t = this, a = !!h.u(o) || o, l = h.p(e), c = function(H, O) {
-          var j = h.w(t.$u ? Date.UTC(t.$y, O, H) : new Date(t.$y, O, H), t);
-          return a ? j : j.endOf(b);
-        }, v = function(H, O) {
-          return h.w(t.toDate()[H].apply(t.toDate("s"), (a ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(O)), t);
-        }, m = this.$W, S = this.$M, _ = this.$D, T = "set" + (this.$u ? "UTC" : "");
-        switch (l) {
+      }, r.startOf = function(e, i) {
+        var t = this, l = !!c.u(i) || i, u = c.p(e), f = function(A, O) {
+          var k = c.w(t.$u ? Date.UTC(t.$y, O, A) : new Date(t.$y, O, A), t);
+          return l ? k : k.endOf(M);
+        }, m = function(A, O) {
+          return c.w(t.toDate()[A].apply(t.toDate("s"), (l ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(O)), t);
+        }, p = this.$W, S = this.$M, T = this.$D, z = "set" + (this.$u ? "UTC" : "");
+        switch (u) {
           case x:
-            return a ? c(1, 0) : c(31, 11);
-          case y:
-            return a ? c(1, S) : c(0, S + 1);
+            return l ? f(1, 0) : f(31, 11);
+          case w:
+            return l ? f(1, S) : f(0, S + 1);
           case D:
-            var Y = this.$locale().weekStart || 0, C = (m < Y ? m + 7 : m) - Y;
-            return c(a ? _ - C : _ + (6 - C), S);
-          case b:
-          case A:
-            return v(T + "Hours", 0);
+            var _ = this.$locale().weekStart || 0, P = (p < _ ? p + 7 : p) - _;
+            return f(l ? T - P : T + (6 - P), S);
           case M:
-            return v(T + "Minutes", 1);
-          case p:
-            return v(T + "Seconds", 2);
+          case H:
+            return m(z + "Hours", 0);
+          case b:
+            return m(z + "Minutes", 1);
+          case y:
+            return m(z + "Seconds", 2);
           case d:
-            return v(T + "Milliseconds", 3);
+            return m(z + "Milliseconds", 3);
           default:
             return this.clone();
         }
-      }, n.endOf = function(e) {
+      }, r.endOf = function(e) {
         return this.startOf(e, !1);
-      }, n.$set = function(e, o) {
-        var t, a = h.p(e), l = "set" + (this.$u ? "UTC" : ""), c = (t = {}, t[b] = l + "Date", t[A] = l + "Date", t[y] = l + "Month", t[x] = l + "FullYear", t[M] = l + "Hours", t[p] = l + "Minutes", t[d] = l + "Seconds", t[g] = l + "Milliseconds", t)[a], v = a === b ? this.$D + (o - this.$W) : o;
-        if (a === y || a === x) {
-          var m = this.clone().set(A, 1);
-          m.$d[c](v), m.init(), this.$d = m.set(A, Math.min(this.$D, m.daysInMonth())).$d;
-        } else
-          c && this.$d[c](v);
+      }, r.$set = function(e, i) {
+        var t, l = c.p(e), u = "set" + (this.$u ? "UTC" : ""), f = (t = {}, t[M] = u + "Date", t[H] = u + "Date", t[w] = u + "Month", t[x] = u + "FullYear", t[b] = u + "Hours", t[y] = u + "Minutes", t[d] = u + "Seconds", t[g] = u + "Milliseconds", t)[l], m = l === M ? this.$D + (i - this.$W) : i;
+        if (l === w || l === x) {
+          var p = this.clone().set(H, 1);
+          p.$d[f](m), p.init(), this.$d = p.set(H, Math.min(this.$D, p.daysInMonth())).$d;
+        } else f && this.$d[f](m);
         return this.init(), this;
-      }, n.set = function(e, o) {
-        return this.clone().$set(e, o);
-      }, n.get = function(e) {
-        return this[h.p(e)]();
-      }, n.add = function(e, o) {
-        var t, a = this;
+      }, r.set = function(e, i) {
+        return this.clone().$set(e, i);
+      }, r.get = function(e) {
+        return this[c.p(e)]();
+      }, r.add = function(e, i) {
+        var t, l = this;
         e = Number(e);
-        var l = h.p(o), c = function(S) {
-          var _ = $(a);
-          return h.w(_.date(_.date() + Math.round(S * e)), a);
+        var u = c.p(i), f = function(S) {
+          var T = $(l);
+          return c.w(T.date(T.date() + Math.round(S * e)), l);
         };
-        if (l === y)
-          return this.set(y, this.$M + e);
-        if (l === x)
-          return this.set(x, this.$y + e);
-        if (l === b)
-          return c(1);
-        if (l === D)
-          return c(7);
-        var v = (t = {}, t[p] = i, t[M] = f, t[d] = s, t)[l] || 1, m = this.$d.getTime() + e * v;
-        return h.w(m, this);
-      }, n.subtract = function(e, o) {
-        return this.add(-1 * e, o);
-      }, n.format = function(e) {
-        var o = this, t = this.$locale();
-        if (!this.isValid())
-          return t.invalidDate || F;
-        var a = e || "YYYY-MM-DDTHH:mm:ssZ", l = h.z(this), c = this.$H, v = this.$m, m = this.$M, S = t.weekdays, _ = t.months, T = function(O, j, U, E) {
-          return O && (O[j] || O(o, a)) || U[j].slice(0, E);
-        }, Y = function(O) {
-          return h.s(c % 12 || 12, O, "0");
-        }, C = t.meridiem || function(O, j, U) {
-          var E = O < 12 ? "AM" : "PM";
-          return U ? E.toLowerCase() : E;
-        }, H = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: m + 1, MM: h.s(m + 1, 2, "0"), MMM: T(t.monthsShort, m, _, 3), MMMM: T(_, m), D: this.$D, DD: h.s(this.$D, 2, "0"), d: String(this.$W), dd: T(t.weekdaysMin, this.$W, S, 2), ddd: T(t.weekdaysShort, this.$W, S, 3), dddd: S[this.$W], H: String(c), HH: h.s(c, 2, "0"), h: Y(1), hh: Y(2), a: C(c, v, !0), A: C(c, v, !1), m: String(v), mm: h.s(v, 2, "0"), s: String(this.$s), ss: h.s(this.$s, 2, "0"), SSS: h.s(this.$ms, 3, "0"), Z: l };
-        return a.replace(q, function(O, j) {
-          return j || H[O] || l.replace(":", "");
+        if (u === w) return this.set(w, this.$M + e);
+        if (u === x) return this.set(x, this.$y + e);
+        if (u === M) return f(1);
+        if (u === D) return f(7);
+        var m = (t = {}, t[y] = a, t[b] = h, t[d] = n, t)[u] || 1, p = this.$d.getTime() + e * m;
+        return c.w(p, this);
+      }, r.subtract = function(e, i) {
+        return this.add(-1 * e, i);
+      }, r.format = function(e) {
+        var i = this, t = this.$locale();
+        if (!this.isValid()) return t.invalidDate || B;
+        var l = e || "YYYY-MM-DDTHH:mm:ssZ", u = c.z(this), f = this.$H, m = this.$m, p = this.$M, S = t.weekdays, T = t.months, z = t.meridiem, _ = function(O, k, Y, I) {
+          return O && (O[k] || O(i, l)) || Y[k].slice(0, I);
+        }, P = function(O) {
+          return c.s(f % 12 || 12, O, "0");
+        }, A = z || function(O, k, Y) {
+          var I = O < 12 ? "AM" : "PM";
+          return Y ? I.toLowerCase() : I;
+        };
+        return l.replace(Q, function(O, k) {
+          return k || function(Y) {
+            switch (Y) {
+              case "YY":
+                return String(i.$y).slice(-2);
+              case "YYYY":
+                return c.s(i.$y, 4, "0");
+              case "M":
+                return p + 1;
+              case "MM":
+                return c.s(p + 1, 2, "0");
+              case "MMM":
+                return _(t.monthsShort, p, T, 3);
+              case "MMMM":
+                return _(T, p);
+              case "D":
+                return i.$D;
+              case "DD":
+                return c.s(i.$D, 2, "0");
+              case "d":
+                return String(i.$W);
+              case "dd":
+                return _(t.weekdaysMin, i.$W, S, 2);
+              case "ddd":
+                return _(t.weekdaysShort, i.$W, S, 3);
+              case "dddd":
+                return S[i.$W];
+              case "H":
+                return String(f);
+              case "HH":
+                return c.s(f, 2, "0");
+              case "h":
+                return P(1);
+              case "hh":
+                return P(2);
+              case "a":
+                return A(f, m, !0);
+              case "A":
+                return A(f, m, !1);
+              case "m":
+                return String(m);
+              case "mm":
+                return c.s(m, 2, "0");
+              case "s":
+                return String(i.$s);
+              case "ss":
+                return c.s(i.$s, 2, "0");
+              case "SSS":
+                return c.s(i.$ms, 3, "0");
+              case "Z":
+                return u;
+            }
+            return null;
+          }(O) || u.replace(":", "");
         });
-      }, n.utcOffset = function() {
+      }, r.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
-      }, n.diff = function(e, o, t) {
-        var a, l = h.p(o), c = $(e), v = (c.utcOffset() - this.utcOffset()) * i, m = this - c, S = h.m(this, c);
-        return S = (a = {}, a[x] = S / 12, a[y] = S, a[B] = S / 3, a[D] = (m - v) / 6048e5, a[b] = (m - v) / 864e5, a[M] = m / f, a[p] = m / i, a[d] = m / s, a)[l] || m, t ? S : h.a(S);
-      }, n.daysInMonth = function() {
-        return this.endOf(y).$D;
-      }, n.$locale = function() {
-        return k[this.$L];
-      }, n.locale = function(e, o) {
-        if (!e)
-          return this.$L;
-        var t = this.clone(), a = P(e, o, !0);
-        return a && (t.$L = a), t;
-      }, n.clone = function() {
-        return h.w(this.$d, this);
-      }, n.toDate = function() {
+      }, r.diff = function(e, i, t) {
+        var l, u = this, f = c.p(i), m = $(e), p = (m.utcOffset() - this.utcOffset()) * a, S = this - m, T = function() {
+          return c.m(u, m);
+        };
+        switch (f) {
+          case x:
+            l = T() / 12;
+            break;
+          case w:
+            l = T();
+            break;
+          case U:
+            l = T() / 3;
+            break;
+          case D:
+            l = (S - p) / 6048e5;
+            break;
+          case M:
+            l = (S - p) / 864e5;
+            break;
+          case b:
+            l = S / h;
+            break;
+          case y:
+            l = S / a;
+            break;
+          case d:
+            l = S / n;
+            break;
+          default:
+            l = S;
+        }
+        return t ? l : c.a(l);
+      }, r.daysInMonth = function() {
+        return this.endOf(w).$D;
+      }, r.$locale = function() {
+        return j[this.$L];
+      }, r.locale = function(e, i) {
+        if (!e) return this.$L;
+        var t = this.clone(), l = E(e, i, !0);
+        return l && (t.$L = l), t;
+      }, r.clone = function() {
+        return c.w(this.$d, this);
+      }, r.toDate = function() {
         return new Date(this.valueOf());
-      }, n.toJSON = function() {
+      }, r.toJSON = function() {
         return this.isValid() ? this.toISOString() : null;
-      }, n.toISOString = function() {
+      }, r.toISOString = function() {
         return this.$d.toISOString();
-      }, n.toString = function() {
+      }, r.toString = function() {
         return this.$d.toUTCString();
-      }, u;
-    }(), G = W.prototype;
-    return $.prototype = G, [["$ms", g], ["$s", d], ["$m", p], ["$H", M], ["$W", b], ["$M", y], ["$y", x], ["$D", A]].forEach(function(u) {
-      G[u[1]] = function(n) {
-        return this.$g(n, u[0], u[1]);
+      }, o;
+    }(), Z = W.prototype;
+    return $.prototype = Z, [["$ms", g], ["$s", d], ["$m", y], ["$H", b], ["$W", M], ["$M", w], ["$y", x], ["$D", H]].forEach(function(o) {
+      Z[o[1]] = function(r) {
+        return this.$g(r, o[0], o[1]);
       };
-    }), $.extend = function(u, n) {
-      return u.$i || (u(n, W, $), u.$i = !0), $;
-    }, $.locale = P, $.isDayjs = N, $.unix = function(u) {
-      return $(1e3 * u);
-    }, $.en = k[z], $.Ls = k, $.p = {}, $;
+    }), $.extend = function(o, r) {
+      return o.$i || (o(r, W, $), o.$i = !0), $;
+    }, $.locale = E, $.isDayjs = F, $.unix = function(o) {
+      return $(1e3 * o);
+    }, $.en = j[C], $.Ls = j, $.p = {}, $;
   });
-})(R);
-const se = R.exports;
-class ne {
+})(V);
+var se = V.exports;
+const ie = /* @__PURE__ */ ne(se);
+class oe {
   getTimestamp() {
-    return se().format();
+    return ie().format();
   }
 }
-class I {
-  constructor(r) {
+class J {
+  constructor(s) {
     L(this, "level");
     L(this, "levelOnly");
-    this.level = Object.freeze(r.level), this.levelOnly = Object.freeze(r.levelOnly);
+    this.level = Object.freeze(s.level), this.levelOnly = Object.freeze(s.levelOnly);
   }
-  tryGetData(r) {
-    let s = {
+  /**
+   * @name tryGetData
+   * @description
+   * Tries to parse the params.data to string if it was passed (even as undefined)
+   * If it was passed, we still ahve to log it as 'undefined',
+   * unless it was not passed at all in which case we do not want to log it.
+   */
+  tryGetData(s) {
+    let n = {
       dataAsString: "",
       dataRaw: [],
       hasData: !1,
       message: ""
     };
-    const i = r.args || [];
-    if (s.hasData = i.length > 1, i.length === 1)
-      s.message = i[0];
-    else if (i.length > 1) {
-      s.message = i[0], i.shift(), s.dataRaw = i;
+    const a = s.args || [];
+    if (n.hasData = a.length > 1, a.length === 1)
+      n.message = a[0];
+    else if (a.length > 1) {
+      n.message = a[0], a.shift(), n.dataRaw = a;
       try {
-        return Array.isArray(i) ? s.dataAsString = i.map((f) => {
-          if (typeof f == "object")
+        return Array.isArray(a) ? n.dataAsString = a.map((h) => {
+          if (typeof h == "object")
             try {
-              return JSON.stringify(f);
+              return JSON.stringify(h);
             } catch {
-              return f.toString();
+              return h.toString();
             }
           else
-            return f.toString();
-        }).join(": ") : s.dataAsString = JSON.stringify(i), s;
+            return h.toString();
+        }).join(": ") : n.dataAsString = JSON.stringify(a), n;
       } catch {
-        return s.dataAsString = i.join(", "), s;
+        return n.dataAsString = a.join(", "), n;
       }
     }
-    return s;
+    return n;
   }
 }
-class re extends I {
-  constructor(r) {
-    super(r);
+class ae extends J {
+  constructor(s) {
+    super(s);
   }
-  async write(r) {
-    return new Promise((s) => {
-      const { timestamp: i, level: f, args: g } = r, d = `${i} ${f}`;
-      g ? console.log(`${d}:`, ...g) : console.log(d), s(!0);
+  async write(s) {
+    return new Promise((n) => {
+      const { timestamp: a, level: h, args: g } = s, d = `${a} ${h}`;
+      g ? console.log(`${d}:`, ...g) : console.log(d), n(!0);
     });
   }
 }
-class oe extends I {
-  constructor(s) {
-    super(s);
+class ue extends J {
+  constructor(n) {
+    super(n);
     L(this, "prefix", Object.freeze("%c "));
     L(this, "levelStyles", {
       log: "background: blue; color: white",
@@ -272,27 +355,28 @@ class oe extends I {
       warnhigh: "font-size: 20px; background: orange; color: white",
       error: "background: red; color: white"
     });
-    s.levelStyles && (this.levelStyles = Object.freeze(s.levelStyles));
+    n.levelStyles && (this.levelStyles = Object.freeze(n.levelStyles));
   }
-  async write(s) {
-    return new Promise((i) => {
-      const { timestamp: f } = s, g = (s.level || "").trim(), { message: d, dataRaw: p, hasData: M } = this.tryGetData(s);
-      let b = !1;
-      if (navigator && (b = /chrome/gi.test(navigator.userAgent)), g !== "log" && b) {
-        const D = `${f} ${this.prefix + g} ${d}`.trim();
-        M ? console.log(`${D}:`, this.levelStyles[g], ...p) : console.log(`${D}:`, this.levelStyles[g]);
+  async write(n) {
+    return new Promise((a) => {
+      const { timestamp: h } = n, g = (n.level || "").trim(), { message: d, dataRaw: y, hasData: b } = this.tryGetData(n);
+      let M = !1;
+      if (navigator && (M = /chrome/gi.test(navigator.userAgent)), g !== "log" && M) {
+        const D = `${h} ${this.prefix + g} ${d}`.trim();
+        b ? console.log(`${D}:`, this.levelStyles[g], ...y) : console.log(`${D}:`, this.levelStyles[g]);
       } else {
-        const D = `${f} ${g} ${d}`.trim();
-        M ? console.log(`${D}:`, ...p) : console.log(D);
+        const D = `${h} ${g} ${d}`.trim();
+        b ? console.log(`${D}:`, ...y) : console.log(D);
       }
-      i(!0);
+      a(!0);
     });
   }
 }
-class le extends I {
-  constructor(s) {
-    super(s);
+class ce extends J {
+  constructor(n) {
+    super(n);
     L(this, "domElement");
+    //HTMLElement
     L(this, "levelStyles", {
       log: "color: black",
       highlight: "background-color: yellow; color: black",
@@ -302,46 +386,53 @@ class le extends I {
       warnhigh: "font-size: 20px; background: orange; color: white",
       error: "color: red"
     });
-    this.domElement = s.domElement, s.levelStyles && (this.levelStyles = Object.freeze(s.levelStyles));
+    this.domElement = n.domElement, n.levelStyles && (this.levelStyles = Object.freeze(n.levelStyles));
   }
-  async write(s) {
-    return new Promise((i, f) => {
+  async write(n) {
+    return new Promise((a, h) => {
       if (!this.domElement || this.domElement.innerHTML === void 0)
-        f("HtmlTransport: write: Invalid or undefined dom element");
+        h("HtmlTransport: write: Invalid or undefined dom element");
       else {
-        const { timestamp: g, level: d } = s, { dataAsString: p, hasData: M } = this.tryGetData(s), b = `<span>${g}</span>`;
+        const { timestamp: g, level: d } = n, { dataAsString: y, hasData: b } = this.tryGetData(n), M = `<span>${g}</span>`;
         let D = "";
         d !== "log" ? D = `<span style="${this.levelStyles[d]}">${d}</span>` : D = `<span>${d}</span>`;
-        let y = `${b} ${D}`;
-        M ? y = `${y}: <span>${p}</span><br/>` : y = `${y}<br/>`, this.domElement.innerHTML += y, i(!0);
+        let w = `${M} ${D}`;
+        b ? w = `${w}: <span>${y}</span><br/>` : w = `${w}<br/>`, this.domElement.innerHTML += w, a(!0);
       }
     });
   }
 }
-class ae extends I {
-  constructor(s) {
-    super(s);
+class he extends J {
+  constructor(n) {
+    super(n);
     L(this, "prefix", Object.freeze("\x1B["));
     L(this, "suffix", Object.freeze("\x1B[0;37m"));
     L(this, "levelStyles", {
       log: "0;1;37m",
+      // white, bold
       highlight: "7;1;38m",
+      // white background, bold
       debug: "0;1;34m",
+      // blue, bold
       info: "0;1;32m",
+      // green, bold
       warn: "0;1;33m",
+      // yellow, bold
       warnhigh: "0;1;35m",
+      // purple, bold
       error: "0;1;31m"
+      // red, bold
     });
-    s.levelStyles && (this.levelStyles = Object.freeze(s.levelStyles));
+    n.levelStyles && (this.levelStyles = Object.freeze(n.levelStyles));
   }
-  async write(s) {
-    return new Promise((i) => {
-      const { timestamp: f, level: g } = s, d = `${f} ${this.prefix}${this.levelStyles[g]}${g}${this.suffix}:`, p = s.args || [];
-      p.length > 0 ? console.log(`${d}:`, ...p) : console.log(d), i(!0);
+  async write(n) {
+    return new Promise((a) => {
+      const { timestamp: h, level: g } = n, d = `${h} ${this.prefix}${this.levelStyles[g]}${g}${this.suffix}:`, y = n.args || [];
+      y.length > 0 ? console.log(`${d}:`, ...y) : console.log(d), a(!0);
     });
   }
 }
-const Z = Object.freeze([
+const R = Object.freeze([
   "log",
   "highlight",
   "debug",
@@ -349,109 +440,109 @@ const Z = Object.freeze([
   "warn",
   "error"
 ]);
-class ue {
-  constructor(r) {
+class fe {
+  constructor(s) {
     L(this, "supportedLevels");
     L(this, "transports");
     L(this, "timestampService");
-    if (r) {
-      const { levels: s, transports: i, timestampService: f } = r;
-      s && s.length > 0 ? this.initLevels(s) : this.initLevels(), i && i.length > 0 ? this.initTransports(i) : this.initTransports(), f ? this.initTimestampService(f) : this.initTimestampService();
+    if (s) {
+      const { levels: n, transports: a, timestampService: h } = s;
+      n && n.length > 0 ? this.initLevels(n) : this.initLevels(), a && a.length > 0 ? this.initTransports(a) : this.initTransports(), h ? this.initTimestampService(h) : this.initTimestampService();
     } else
       this.initLevels(), this.initTransports(), this.initTimestampService();
   }
   timestamp() {
-    return this.timestampService ? this.timestampService.getTimestamp() : new Date().toString();
+    return this.timestampService ? this.timestampService.getTimestamp() : (/* @__PURE__ */ new Date()).toString();
   }
-  initLevels(r) {
-    const s = r || [];
-    s.length > 0 ? this.supportedLevels = Object.freeze([...s]) : this.supportedLevels = Object.freeze([...Z]);
+  initLevels(s) {
+    const n = s || [];
+    n.length > 0 ? this.supportedLevels = Object.freeze([...n]) : this.supportedLevels = Object.freeze([...R]);
   }
-  initTransports(r) {
-    (r || []).length > 0 ? this.transports = r : this.transports = [
-      new re({
+  initTransports(s) {
+    (s || []).length > 0 ? this.transports = s : this.transports = [
+      new ae({
         level: "error",
         levelOnly: !1
       })
     ];
   }
-  initTimestampService(r) {
-    r ? this.timestampService = r : this.timestampService = new ne();
+  initTimestampService(s) {
+    s ? this.timestampService = s : this.timestampService = new oe();
   }
-  async canProceed(r) {
-    return new Promise((s) => {
-      let i = !1;
-      const { transportLevel: f, transportLevelOnly: g } = r, d = (r.level || "").toString().trim().toLowerCase();
+  async canProceed(s) {
+    return new Promise((n) => {
+      let a = !1;
+      const { transportLevel: h, transportLevelOnly: g } = s, d = (s.level || "").toString().trim().toLowerCase();
       if (g)
-        i = f === d;
-      else if (f === d || ["log", "highlight"].indexOf(d) > -1)
-        i = !0;
+        a = h === d;
+      else if (h === d || ["log", "highlight"].indexOf(d) > -1)
+        a = !0;
       else {
-        const p = this.supportedLevels, M = p.indexOf(f);
-        M > 1 && (i = p.slice(
+        const y = this.supportedLevels, b = y.indexOf(h);
+        b > 1 && (a = y.slice(
           0,
-          M
+          b
         ).includes(d));
       }
-      s(i);
+      n(a);
     });
   }
-  async transportsWrite(r) {
-    return new Promise((s) => {
-      this.transports.forEach(async (i) => {
+  async transportsWrite(s) {
+    return new Promise((n) => {
+      this.transports.forEach(async (a) => {
         if (await this.canProceed({
-          transportLevel: i.level,
-          transportLevelOnly: i.levelOnly,
-          level: r.level
+          transportLevel: a.level,
+          transportLevelOnly: a.levelOnly,
+          level: s.level
         })) {
-          const g = await i.write(r);
-          s(g);
+          const g = await a.write(s);
+          n(g);
         }
       });
     });
   }
   getDefaultLevels() {
-    return Z;
+    return R;
   }
   getSupportedLevels() {
     return this.supportedLevels;
   }
-  log(...r) {
-    let s = "log", i = [];
-    if ((r || []).length > 0) {
-      const g = (r[0] || "").toString().trim().toLowerCase();
-      this.supportedLevels.indexOf(g) > -1 ? (s = g, r.shift(), r.length > 0 && (i = r)) : (s = "log", i = r);
+  log(...s) {
+    let n = "log", a = [];
+    if ((s || []).length > 0) {
+      const g = (s[0] || "").toString().trim().toLowerCase();
+      this.supportedLevels.indexOf(g) > -1 ? (n = g, s.shift(), s.length > 0 && (a = s)) : (n = "log", a = s);
     }
-    const f = {
+    const h = {
       timestamp: this.timestamp(),
-      level: s,
-      args: i
+      level: n,
+      args: a
     };
-    this.transportsWrite(f).then(() => {
+    this.transportsWrite(h).then(() => {
     });
   }
-  highlight(...r) {
-    this.log("highlight", ...r);
+  highlight(...s) {
+    this.log("highlight", ...s);
   }
-  debug(...r) {
-    this.log("debug", ...r);
+  debug(...s) {
+    this.log("debug", ...s);
   }
-  info(...r) {
-    this.log("info", ...r);
+  info(...s) {
+    this.log("info", ...s);
   }
-  warn(...r) {
-    this.log("warn", ...r);
+  warn(...s) {
+    this.log("warn", ...s);
   }
-  error(...r) {
-    this.log("error", ...r);
+  error(...s) {
+    this.log("error", ...s);
   }
 }
 export {
-  I as BaseTransport,
-  oe as ChromeTransport,
-  ne as DayJsTimestampService,
-  re as DefaultTransport,
-  le as HtmlTransport,
-  ue as Logger,
-  ae as StdErrTransport
+  J as BaseTransport,
+  ue as ChromeTransport,
+  oe as DayJsTimestampService,
+  ae as DefaultTransport,
+  ce as HtmlTransport,
+  fe as Logger,
+  he as StdErrTransport
 };

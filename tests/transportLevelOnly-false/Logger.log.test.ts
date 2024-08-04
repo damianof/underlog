@@ -1,4 +1,4 @@
-import { Logger } from '../../src/main'
+import { Logger } from '../../src'
 
 describe('Logger.log with transportLevelOnly false', () => {
   const logger = new Logger({

@@ -2,7 +2,7 @@
 /// <reference types="vite/client" />
 
 import { defineConfig } from 'vite'
-import { fileURLToPath, URL } from 'url'
+// import { fileURLToPath, URL } from 'url'
 import path from 'path'
 
 // https://vitejs.dev/config/
@@ -25,7 +25,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/main.ts'), // fileURLToPath(new URL('src/main.ts')),
+      entry: path.resolve(__dirname, 'src/index.ts'), // fileURLToPath(new URL('src/index.ts')),
       name: 'underlog',
       fileName: (format) => `underlog.${format}.js`,
     },

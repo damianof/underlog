@@ -24,7 +24,12 @@ export interface ILoggerOptions {
 }
 
 const defaultLevels = Object.freeze([
-  'log', 'highlight', 'debug', 'info', 'warn', 'error'
+  'log',
+  'highlight',
+  'debug',
+  'info',
+  'warn',
+  'error',
 ])
 
 export class Logger implements ILogger {
@@ -124,7 +129,7 @@ export class Logger implements ILogger {
           if (currentTransportLevelIndex > 1) {
             const previousLevels = supportedLevels.slice(
               0,
-              currentTransportLevelIndex
+              currentTransportLevelIndex,
             )
             result = previousLevels.includes(level)
           }
