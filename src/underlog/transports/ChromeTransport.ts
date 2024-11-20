@@ -1,6 +1,10 @@
 import { ILogTransportWriteParams } from '../ILogTransport'
 import { BaseTransport } from './BaseTransport'
 
+function isRunningInBrowser() {
+  return typeof window !== 'undefined' && typeof navigator !== 'undefined'
+}
+
 export class ChromeTransport extends BaseTransport {
   private readonly prefix: string = Object.freeze('%c ')
   private readonly levelStyles: { [key: string]: string } = {
@@ -33,8 +37,8 @@ export class ChromeTransport extends BaseTransport {
       const { message, dataRaw, hasData } = this.tryGetData(params)
 
       let isChrome = false
-      if (navigator) {
-        isChrome = /chrome/gi.test(navigator.userAgent)
+      if (isRunningInBrowser()) {
+        isChrome = /chrome/gi.test(`${navigator.userAgent || ''}`)
       }
 
       if (level !== 'log' && isChrome) {
