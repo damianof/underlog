@@ -46,7 +46,7 @@
     "@types/jest": "^29.5.12",
     "jsdom": "^24.1.1",
     "typescript": "^5.5.4",
-    "vite": "^5.3.5",
+    "vite": "^6.4.2",
     "vitest": "^2.0.5"
   },
   "dependencies": {
